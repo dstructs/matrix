@@ -1,7 +1,7 @@
 {
   "name": "compute-matrix",
   "version": "0.0.0",
-  "description": "Multidimensional matrices.",
+  "description": "Matrix data structure.",
   "author": {
     "name": "Athan Reines",
     "email": "kgryte@gmail.com"
@@ -25,7 +25,17 @@
   "keywords": [
     "compute.io",
     "compute",
-    "computation"
+    "computation",
+    "mathematics",
+    "math",
+    "linear",
+    "algebra",
+    "two dimensional",
+    "2d",
+    "matrix",
+    "data",
+    "structure",
+    "array"
   ],
   "bugs": {
     "url": "https://github.com/compute-io/matrix/issues"

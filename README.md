@@ -1,8 +1,8 @@
-matrix
+Matrix
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> Multidimensional matrices.
+> Matrix data structure.
 
 
 ## Installation
@@ -17,10 +17,10 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 ## Usage
 
 ``` javascript
-var foo = require( 'compute-matrix' );
+var Matrix = require( 'compute-matrix' );
 ```
 
-#### foo( arr )
+#### Matrix()
 
 What does this function do?
 
@@ -28,7 +28,7 @@ What does this function do?
 ## Examples
 
 ``` javascript
-var foo = require( 'compute-matrix' );
+var Matrix = require( 'compute-matrix' );
 ```
 
 To run the example code from the top-level application directory,
