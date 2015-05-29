@@ -22,7 +22,7 @@ var matrix = require( 'compute-matrix' );
 
 #### matrix( [data,] shape[, dtype] )
 
-Creates a new `Matrix` instance having a specified `shape` (*dimensions*: `[rows,cols]`).
+Creates a new `Matrix` having a specified `shape` (*dimensions*: `[rows,cols]`).
 
 ``` javascript
 var mat = matrix( [2,2] );
@@ -42,7 +42,20 @@ var mat = matrix( [2,2], 'int8' );
 */
 ```
 
-If a __linear__ `numeric array` is not provided, the function initializes a zero-filled typed array. To initialize a matrix, provide an input `data` array, whose length matches the specified `shape`.
+The following `dtypes` are accepted:
+
+*	`int8`
+*	`uint8`
+*	`uint8_clamped`
+*	`int16`
+*	`uint16`
+*	`int32`
+*	`uint32`
+*	`float32`
+*	`float64`
+
+
+If a __linear__ `numeric array` is not provided, the function initializes a __zero-filled__ matrix. To initialize a matrix, provide an input `data` array, whose length matches the specified `shape`.
 
 ``` javascript
 var data = new Int8Array( 4 );
