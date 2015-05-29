@@ -30,7 +30,12 @@
   "bugs": {
     "url": "https://github.com/compute-io/matrix/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "type-name": "^1.0.1",
+    "validate.io-contains": "^1.0.0",
+    "validate.io-positive-integer-array": "^1.0.0",
+    "validate.io-string-primitive": "^1.0.0"
+  },
   "devDependencies": {
     "chai": "2.x.x",
     "mocha": "2.x.x",
