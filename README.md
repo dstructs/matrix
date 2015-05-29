@@ -17,10 +17,10 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 ## Usage
 
 ``` javascript
-var Matrix = require( 'compute-matrix' );
+var matrix = require( 'compute-matrix' );
 ```
 
-#### Matrix()
+#### matrix()
 
 What does this function do?
 
@@ -28,7 +28,7 @@ What does this function do?
 ## Examples
 
 ``` javascript
-var Matrix = require( 'compute-matrix' );
+var matrix = require( 'compute-matrix' );
 ```
 
 To run the example code from the top-level application directory,

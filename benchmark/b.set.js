@@ -2,7 +2,7 @@
 
 // MODULES //
 
-var Matrix = require( './../lib' );
+var matrix = require( './../lib' );
 
 
 // VARIABLES //
@@ -31,7 +31,7 @@ len = 1e6;
 
 res = new Array( 2 );
 
-m = new Matrix( [128,128] );
+m = matrix( [128,128] );
 
 start = process.hrtime();
 for ( i = 0; i < len; i++ ) {

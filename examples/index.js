@@ -1,8 +1,8 @@
 'use strict';
 
-var Matrix = require( './../lib' );
+var matrix = require( './../lib' );
 
-var m = new Matrix( [2,2] );
+var m = matrix( [2,2] );
 
 console.log( m );
 

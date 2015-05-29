@@ -1,7 +1,7 @@
 {
   "name": "compute-matrix",
   "version": "0.0.0",
-  "description": "Matrix data structure.",
+  "description": "Matrices.",
   "author": {
     "name": "Athan Reines",
     "email": "kgryte@gmail.com"
@@ -33,6 +33,7 @@
     "two dimensional",
     "2d",
     "matrix",
+    "matrices",
     "data",
     "structure",
     "array"
