@@ -2,7 +2,7 @@ Matrix
 ===
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
 
-> Matrix data structure.
+> Matrices.
 
 
 ## Installation
@@ -20,15 +20,74 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 var matrix = require( 'compute-matrix' );
 ```
 
-#### matrix()
+#### matrix( [data,] shape[, dtype] )
 
-What does this function do?
+Creates a new `Matrix` instance having a specified `shape` (*dimensions*: `[rows,cols]`).
+
+``` javascript
+var mat = matrix( [2,2] );
+/*
+	[ 0 0
+	  0 0 ]
+*/
+```
+
+By default, the matrix elements are floating-point 64-bit numbers (`float64`). To specify a different data type, provide a `dtype`.
+
+``` javascript
+var mat = matrix( [2,2], 'int8' );
+/*
+	[ 0 0
+	  0 0 ]
+*/
+```
+
+If a __linear__ `numeric array` is not provided, the function initializes a zero-filled typed array. To initialize a matrix, provide an input `data` array, whose length matches the specified `shape`.
+
+``` javascript
+var data = new Int8Array( 4 );
+
+for ( var i = 0; i < data.length; i++ ) {
+	data[ i ] = i;
+}
+
+var mat = matrix( data, [2,2] );
+/*
+	[ 0 1
+	  2 3 ]
+*/
+```
+
+To cast an input `data` array to a different data type, provide a `dtype`.
+
+``` javascript
+var mat = matrix( data, [2,2], 'uint32' );
+/*
+	[ 0 1
+	  2 3 ]
+*/
+```
+
+
 
 
 ## Examples
 
 ``` javascript
 var matrix = require( 'compute-matrix' );
+
+// Create a new 2x2 matrix:
+var mat = matrix( [2,2] );
+console.log( mat );
+
+// Inspect the initialized matrix elements:
+console.log( mat.get( 1, 1 ) );
+
+// Set a matrix element:
+console.log( mat.set( 1, 1, 5  ) );
+
+// Confirm that the matrix element was set:
+console.log( mat.get( 1, 1 ) );
 ```
 
 To run the example code from the top-level application directory,

@@ -29,7 +29,7 @@ for ( i = 0; i < len; i++ ) {
 
 len = 1e6;
 
-res = new Array( 2 );
+res = new Array( 1 );
 
 m = matrix( [128,128] );
 
@@ -39,12 +39,12 @@ for ( i = 0; i < len; i++ ) {
 }
 stop = process.hrtime( start );
 
-res[ 1 ] = stop[ 0 ] + stop[ 1 ]*1e-9;
+res[ 0 ] = stop[ 0 ] + stop[ 1 ]*1e-9;
 
 
 // --------------------------------------
 // RESULTS
 
-console.log( 'Set:\t%d ops/sec', Math.floor( len/res[ 1 ] ) );
+console.log( 'Set:\t%d ops/sec', Math.floor( len/res[ 0 ] ) );
 console.log( '\n' );
 

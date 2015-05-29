@@ -2,8 +2,15 @@
 
 var matrix = require( './../lib' );
 
-var m = matrix( [2,2] );
+// Create a new 2x2 matrix:
+var mat = matrix( [2,2] );
+console.log( mat );
 
-console.log( m );
+// Inspect the initialized matrix elements:
+console.log( mat.get( 1, 1 ) );
 
-console.log( m.set( 1, 1, 5  ) );
+// Set a matrix element:
+console.log( mat.set( 1, 1, 5  ) );
+
+// Confirm that the matrix element was set:
+console.log( mat.get( 1, 1 ) );
