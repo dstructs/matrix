@@ -5,8 +5,6 @@ Matrix
 > Matrices.
 
 
-## Table of Contents
-
 1. [Usage](#usage)
 	-	[Matrix](#matrix)
 		-	[dtype](#matrix-dtype)
@@ -18,7 +16,7 @@ Matrix
 		-	[data](#matrix-data)
 		-	[get](#matrix-get)
 		-	[set](#matrix-set)
-	-	[Constructors](#matrix-constructors)
+	-	[Constructor](#matrix-constructor)
 	-	[Raw](#matrix-raw)
 1. [Examples](#examples)
 
