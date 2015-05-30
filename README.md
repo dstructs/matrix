@@ -60,16 +60,16 @@ The following `dtypes` are accepted:
 If a __linear__ `numeric array` is not provided, the function initializes a __zero-filled__ matrix. To initialize a matrix, provide an input `data` array, whose length matches the specified `shape`.
 
 ``` javascript
-var data = new Int8Array( 4 );
+var data = new Int8Array( 6 );
 
 for ( var i = 0; i < data.length; i++ ) {
 	data[ i ] = i;
 }
 
-var mat = matrix( data, [2,2] );
+var mat = matrix( data, [2,3] ); // 2*3 = 6
 /*
-	[ 0 1
-	  2 3 ]
+	[ 0 1 2
+	  3 4 5 ]
 */
 ```
 
