@@ -237,7 +237,7 @@ A `Matrix` has a constructor having the following interface...
 
 #### mat.constructor( data, shape, dtype )
 
-Creates a new `Matrix` having a specified `shape` and `dtype`.
+Creates a new `Matrix` having a specified `shape`, `dtype`, and underlying typed `data` store.
 
 ``` javascript
 var data = new Float32Array( 10 );
@@ -271,7 +271,7 @@ For performance, a lower-level interface is provided which forgoes some of the g
 <a name="matrix-raw"></a>
 #### matrix.raw( [data,] shape[, dtype] )
 
-Creates a new `Matrix`.
+Creates a new `Matrix` having a specified `shape`.
 
 ``` javascript
 var data = new Float32Array( 10 );
