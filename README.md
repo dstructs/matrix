@@ -227,7 +227,7 @@ __Note__: out-of-bounds subscripts will silently fail.
 
 
 
-===
+---
 ## Examples
 
 ``` javascript
@@ -254,6 +254,7 @@ $ node ./examples/index.js
 ```
 
 
+---
 ## Tests
 
 ### Unit
