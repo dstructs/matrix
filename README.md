@@ -23,7 +23,7 @@ var matrix = require( 'compute-matrix' );
 <a name="matrix"></a>
 #### matrix( [data,] shape[, dtype] )
 
-Creates a new `Matrix` having a specified `shape` (*dimensions*: `[rows,cols]`).
+Creates a new `Matrix` having a specified `shape` (dimensions => `[rows,cols]`).
 
 ``` javascript
 var mat = matrix( [3,2] );
@@ -181,6 +181,45 @@ var data = mat.data;
 A `Matrix` has the following methods...
 
 
+<a name="matrix-set"></a>
+#### mat.set( i, j, value )
+
+Sets a `Matrix` element specified according to the provided subscripts.
+
+``` javascript
+mat.set( 3, 1, 20 );
+/*
+	[ 0 1
+	  2 3
+	  4 5
+	  6 20
+	  8 9 ]
+*/
+```
+
+__Note__: out-of-bounds subscripts will silently fail.
+
+
+<a name="matrix-iset"></a>
+#### mat.iset( index, value )
+
+Sets a `Matrix` element at a specified [`index`](#linear-indexing).
+
+``` javascript
+mat.iset( 7, 25 );
+/*
+	[ 0 1
+	  2 3
+	  4 5
+	  6 25
+	  8 9 ]
+*/
+```
+
+__Note__: out-of-bounds subscripts will silently fail.
+
+
+
 <a name="matrix-get"></a>
 #### mat.get( i, j )
 
@@ -209,23 +248,17 @@ var values = mat.get( 3, 1 );
 __Note__: out-of-bounds subscripts will return a value of `undefined`.
 
 
-<a name="matrix-set"></a>
-#### mat.set( i, j, value )
+<a name="matrix-iget"></a>
+#### mat.iget( index )
 
-Sets a `Matrix` element specified according to the provided subscripts.
+Returns a `Matrix` element at a specified [`index`](#linear-indexing).
 
 ``` javascript
-mat.set( 3, 1, 20 );
-/*
-	[ 0 1
-	  2 3
-	  4 5
-	  6 20
-	  8 9 ]
-*/
+var value = mat.iget( 7 );
+// returns 7
 ```
 
-__Note__: out-of-bounds subscripts will silently fail.
+__Note__: out-of-bounds subscripts will return a value of `undefined`.
 
 
 ===
@@ -308,6 +341,23 @@ var mat = matrix.raw( data, [5,2], 'float32' );
 *	The lower-level `Matrix` constructor has the same interface as the higher-level `Matrix` constructor.
 
 
+
+---
+### Notes
+
+#### Linear Indexing
+
+A linear `index` corresponds to an element position in a flattened `Matrix` arranged in __row-major__ order. For example, consider an empty 5x2 matrix, its subscripts, and its corresponding linear indices.
+
+``` javascript
+/*
+	[ 0 0       [ a00 a01       [ 0 1
+	  0 0         a10 a11         2 3
+	  0 0   =>    a20 a21   =>    4 5
+	  0 0         a30 a31         6 7
+	  0 0 ]       a40 a41 ]       8 9 ]
+*/
+```
 
 
 ---
