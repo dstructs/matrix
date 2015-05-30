@@ -20,6 +20,7 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 var matrix = require( 'compute-matrix' );
 ```
 
+<a name="matrix"></a>
 #### matrix( [data,] shape[, dtype] )
 
 Creates a new `Matrix` having a specified `shape` (*dimensions*: `[rows,cols]`).
@@ -89,6 +90,7 @@ var mat = matrix( data, [2,2], 'uint32' );
 A `Matrix` has the following properties...
 
 
+<a name="matrix-dtype" class="read-only-property"></a>
 #### mat.dtype
 
 A __read-only__ property returning the underlying storage data type.
@@ -98,7 +100,7 @@ var dtype = mat.dtype;
 // returns <string>
 ```
 
-
+<a name="matrix-ndims" class="read-only-property"></a>
 #### mat.ndims
 
 A __read-only__ property returning the number of dimensions.
@@ -108,7 +110,7 @@ var ndims = mat.ndims;
 // returns 2
 ```
 
-
+<a name="matrix-shape" class="read-only-property"></a>
 #### mat.shape
 
 A __read-only__ property returning the matrix `shape`.
@@ -118,7 +120,7 @@ var shape = mat.shape;
 // returns [...]
 ```
 
-
+<a name="matrix-strides" class="read-only-property"></a>
 #### mat.strides
 
 A __read-only__ property returning the `strides` used to index into the underlying data store.
@@ -128,7 +130,7 @@ var strides = mat.strides;
 // returns [...]
 ```
 
-
+<a name="matrix-length" class="read-only-property"></a>
 #### mat.length
 
 A __read-only__ property returning the matrix `length`; i.e., how many elements are in the `Matrix`, similar to `Array#length`.
@@ -152,7 +154,7 @@ value = mat[ 3 ];
 // returns undefined
 ```
 
-
+<a name="matrix-nbytes" class="read-only-property"></a>
 #### mat.nbytes
 
 A __read-only__ property returning the number of bytes consumed by the `Matrix` elements.
@@ -162,7 +164,7 @@ var nbytes = mat.nbytes;
 // returns <number>
 ```
 
-
+<a name="matrix-data" class="read-only-property"></a>
 #### mat.data
 
 A __read-only__ property pointing to the underlying storage array.
@@ -178,6 +180,7 @@ var data = mat.data;
 A `Matrix` has the following methods...
 
 
+<a name="matrix-get"></a>
 #### mat.get( i, j )
 
 Returns a `Matrix` element specified according to the provided subscripts.
@@ -205,6 +208,7 @@ var values = mat.get( 3, 1 );
 __Note__: out-of-bounds subscripts will return a value of `undefined`.
 
 
+<a name="matrix-set"></a>
 #### mat.set( i, j, value )
 
 Sets a `Matrix` element specified according to the provided subscripts.
@@ -223,6 +227,79 @@ mat.set( 3, 1, 20 );
 __Note__: out-of-bounds subscripts will silently fail.
 
 
+===
+<a name="matrix-constructor"></a>
+### Constructor
+
+Every `Matrix` is an instance of a constructor having the following API...
+
+
+#### mat.constructor( data, shape, dtype )
+
+Creates a new `Matrix` having a specified `shape` and `dtype`.
+
+``` javascript
+var data = new Float32Array( 10 );
+
+var mat1 = matrix( data, [5,2] );
+/*
+	[ 0 0
+	  0 0
+	  0 0
+	  0 0
+	  0 0 ]
+*/
+
+var mat2 = new mat1.constructor( data, [2,5], 'float32' );
+/*
+	[ 0 0 0 0 0
+	  0 0 0 0 0 ]
+```
+
+__Note__: while more performant, constructing a `Matrix` in this manner should be carefully considered. Arguments are not validated or sanity checked.
+
+
+===
+### Raw
+
+For performance, a low-level API is provided which forgoes some of the guarantees of the above API, such as input argument validation and measures to prevent `Matrices` from becoming corrupted. While use of the above API is encouraged in REPL environments, use of the lower-level interface may be warranted when arguments are of a known type or when many `Matrices` must be created.
+
+
+
+<a name="matrix-raw"></a>
+#### matrix.raw( [data,] shape[, dtype] )
+
+Creates a new `Matrix`.
+
+``` javascript
+var data = new Float32Array( 10 );
+
+var mat = matrix.raw( data, [5,2] );
+```
+
+If the input `data` type is known, `Matrix` creation is significantly faster.
+
+``` javascript
+var mat = matrix.raw( data, [5,2], 'float32' );
+```
+
+__Note__: specifying a `dtype` does __not__ cast the data to a different storage type. Instead, providing the argument circumvents the need to determine the input `data` type, resulting in increased performance.
+
+The `shape` and `dtype` parameters are the same as above.
+
+
+<a name="matrix-raw-properties"></a>
+### Properties
+
+`Matrix` properties and methods are the same as for the higher-level API, with the exception that the properties are __no__ longer read-only.
+
+Setting properties is __not__ recommended as the `Matrix` can become corrupted; e.g., incompatible dimensions, out-of-bounds indexing, etc. In contrast to the strict API above, setting these properties will __not__ result in an `error` being thrown. Accordingly, modifying the properties may introduce silent bugs. 
+
+
+<a name="matrix-raw-constructors"></a>
+### Constructors
+
+Constructors produced using the low-level API have the same interface as those created via the higher-level API.
 
 
 
