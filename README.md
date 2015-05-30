@@ -203,7 +203,7 @@ __Note__: out-of-bounds subscripts will silently fail.
 <a name="matrix-iset"></a>
 #### mat.iset( index, value )
 
-Sets a `Matrix` element at a specified [`index`](#linear-indexing).
+Sets a `Matrix` element located at a specified [`index`](#linear-indexing).
 
 ``` javascript
 mat.iset( 7, 25 );
@@ -251,7 +251,7 @@ __Note__: out-of-bounds subscripts will return a value of `undefined`.
 <a name="matrix-iget"></a>
 #### mat.iget( index )
 
-Returns a `Matrix` element at a specified [`index`](#linear-indexing).
+Returns a `Matrix` element located at a specified [`index`](#linear-indexing).
 
 ``` javascript
 var value = mat.iget( 7 );
@@ -351,9 +351,11 @@ A linear `index` corresponds to an element position in a flattened `Matrix` arra
 
 ``` javascript
 /*
+	Matrix      Subscripts      Indices
+
 	[ 0 0       [ a00 a01       [ 0 1
 	  0 0         a10 a11         2 3
-	  0 0   =>    a20 a21   =>    4 5
+A =	  0 0   =>    a20 a21   =>    4 5
 	  0 0         a30 a31         6 7
 	  0 0 ]       a40 a41 ]       8 9 ]
 */
