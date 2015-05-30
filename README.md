@@ -5,6 +5,28 @@ Matrix
 > Matrices.
 
 
+## Table of Contents
+
+1. [Usage](#usage)
+	-	[matrix](#matrix)
+		-	[Properties](#properties)
+			-	[dtype](#matrix-dtype)
+			-	[ndims](#matrix-ndims)
+			-	[shape](#matrix-shape)
+			-	[strides](#matrix-strides)
+			-	[length](#matrix-length)
+			-	[nbytes](#matrix-nbytes)
+			-	[data](#matrix-data)
+		-	[Methods](#methods)
+			-	[get](#matrix-get)
+			-	[set](#matrix-set)
+		-	[Constructors](#matrix-constructors)
+	-	[matrix.raw](#matrix-raw)
+		-	[Properties and Methods](#matrix-raw-properties-methods)
+		-	[Constructors](#matrix-raw-constructors)
+1. [Examples](#examples)
+
+
 ## Installation
 
 ``` bash
@@ -231,7 +253,7 @@ __Note__: out-of-bounds subscripts will silently fail.
 <a name="matrix-constructor"></a>
 ### Constructor
 
-Every `Matrix` is an instance of a constructor having the following API...
+Every `Matrix` has a constructor having the following interface...
 
 
 #### mat.constructor( data, shape, dtype )
@@ -254,6 +276,7 @@ var mat2 = new mat1.constructor( data, [2,5], 'float32' );
 /*
 	[ 0 0 0 0 0
 	  0 0 0 0 0 ]
+*/
 ```
 
 __Note__: while more performant, constructing a `Matrix` in this manner should be carefully considered. Arguments are not validated or sanity checked.
@@ -262,7 +285,7 @@ __Note__: while more performant, constructing a `Matrix` in this manner should b
 ===
 ### Raw
 
-For performance, a low-level API is provided which forgoes some of the guarantees of the above API, such as input argument validation and measures to prevent `Matrices` from becoming corrupted. While use of the above API is encouraged in REPL environments, use of the lower-level interface may be warranted when arguments are of a known type or when many `Matrices` must be created.
+For performance, a lower-level interface is provided which forgoes some of the guarantees of the above API, such as input argument validation and measures to prevent `Matrices` from becoming corrupted. While use of the above API is encouraged in REPL environments, use of the lower-level interface may be warranted when arguments are of a known type or when many `Matrices` must be created.
 
 
 
@@ -288,8 +311,8 @@ __Note__: specifying a `dtype` does __not__ cast the data to a different storage
 The `shape` and `dtype` parameters are the same as above.
 
 
-<a name="matrix-raw-properties"></a>
-### Properties
+<a name="matrix-raw-properties-methods"></a>
+### Properties and Methods
 
 `Matrix` properties and methods are the same as for the higher-level API, with the exception that the properties are __no__ longer read-only.
 
@@ -299,7 +322,7 @@ Setting properties is __not__ recommended as the `Matrix` can become corrupted; 
 <a name="matrix-raw-constructors"></a>
 ### Constructors
 
-Constructors produced using the low-level API have the same interface as those created via the higher-level API.
+Constructors produced using the lower-level API have the same interface as those created via the higher-level API.
 
 
 
