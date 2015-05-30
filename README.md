@@ -315,23 +315,13 @@ var mat = matrix.raw( data, [5,2], 'float32' );
 */
 ```
 
-__Note__: specifying a `dtype` does __not__ cast the data to a different storage type. Instead, providing the argument circumvents the need to determine the input `data` type, resulting in increased performance.
+### Notes
 
-The `shape` and `dtype` parameters are the same as above.
-
-
-<a name="matrix-raw-properties-methods"></a>
-### Properties and Methods
-
-`Matrix` properties and methods are the same as for the higher-level API, with the exception that `Matrix` properties are __no__ longer read-only.
-
-Setting properties is __not__ recommended as the `Matrix` can become corrupted; e.g., incompatible dimensions, out-of-bounds indexing, etc. In contrast to the strict API above, setting `Matrix` properties will __not__ result in an `error` being thrown. Accordingly, property modification may introduce silent bugs. 
-
-
-<a name="matrix-raw-constructor"></a>
-### Constructor
-
-The lower-level `Matrix` constructor has the same interface as the higher-level `Matrix` constructor.
+* 	The `shape` and `dtype` parameters are the same as the higher-level `Matrix` interface.
+*	Specifying a `dtype` does __not__ cast the data to a different storage type. Instead, providing the argument circumvents the need to determine the input `data` type, resulting in increased performance.
+*	`Matrix` properties and methods are the same as for the higher-level API, with the exception that `Matrix` properties are __no__ longer read-only.
+* 	Setting properties is __not__ recommended as the `Matrix` can become corrupted; e.g., incompatible dimensions, out-of-bounds indexing, etc. In contrast to the strict API above, setting `Matrix` properties will __not__ result in an `error` being thrown. Accordingly, property modification may introduce silent bugs. 
+*	The lower-level `Matrix` constructor has the same interface as the higher-level `Matrix` constructor.
 
 
 
