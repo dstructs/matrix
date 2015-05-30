@@ -83,6 +83,7 @@ var mat = matrix( data, [2,2], 'uint32' );
 ```
 
 
+===
 ### Properties
 
 A `Matrix` has the following properties...
@@ -164,14 +165,14 @@ var nbytes = mat.nbytes;
 
 #### mat.data
 
-A __ready-only__ property pointing to the underlying storage array.
+A __read-only__ property pointing to the underlying storage array.
 
 ``` javascript
 var data = mat.data;
 // returns <TypedArray>
 ```
 
-
+===
 ### Methods
 
 A `Matrix` has the following methods...
@@ -219,14 +220,14 @@ mat.set( 3, 1, 20 );
 */
 ```
 
-__Note__: out-of-bounds indices will silently fail.
+__Note__: out-of-bounds subscripts will silently fail.
 
 
 
 
 
 
-
+===
 ## Examples
 
 ``` javascript
