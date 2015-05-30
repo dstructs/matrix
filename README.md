@@ -89,7 +89,7 @@ var mat = matrix( data, [2,2], 'uint32' );
 A `Matrix` has the following properties...
 
 
-#### # mat.dtype
+#### mat.dtype
 
 A __read-only__ property returning the underlying storage data type.
 
@@ -99,7 +99,7 @@ var dtype = mat.dtype;
 ```
 
 
-#### # mat.ndims
+#### mat.ndims
 
 A __read-only__ property returning the number of dimensions.
 
