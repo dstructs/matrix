@@ -162,6 +162,7 @@ __Note__: while a `Matrix` has a `length` property, a `Matrix` should __not__ be
 var data = new Float32Array( 10 );
 
 var mat = matrix( data, [10,1] );
+// [ 0 0 0 0 0 0 0 0 0 0 ]
 
 var value = mat.get( 3, 1 );
 // returns 0
@@ -322,15 +323,15 @@ The `shape` and `dtype` parameters are the same as above.
 <a name="matrix-raw-properties-methods"></a>
 ### Properties and Methods
 
-`Matrix` properties and methods are the same as for the higher-level API, with the exception that the properties are __no__ longer read-only.
+`Matrix` properties and methods are the same as for the higher-level API, with the exception that `Matrix` properties are __no__ longer read-only.
 
-Setting properties is __not__ recommended as the `Matrix` can become corrupted; e.g., incompatible dimensions, out-of-bounds indexing, etc. In contrast to the strict API above, setting these properties will __not__ result in an `error` being thrown. Accordingly, property modification may introduce silent bugs. 
+Setting properties is __not__ recommended as the `Matrix` can become corrupted; e.g., incompatible dimensions, out-of-bounds indexing, etc. In contrast to the strict API above, setting `Matrix` properties will __not__ result in an `error` being thrown. Accordingly, property modification may introduce silent bugs. 
 
 
-<a name="matrix-raw-constructors"></a>
-### Constructors
+<a name="matrix-raw-constructor"></a>
+### Constructor
 
-Constructors produced using the lower-level API have the same interface as those created via the higher-level API.
+The lower-level `Matrix` constructor has the same interface as the higher-level `Matrix` constructor.
 
 
 
