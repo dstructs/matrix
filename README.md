@@ -5,22 +5,6 @@ Matrix
 > Matrices.
 
 
-1. [Usage](#usage)
-	-	[Matrix](#matrix)
-		-	[dtype](#matrix-dtype)
-		-	[ndims](#matrix-ndims)
-		-	[shape](#matrix-shape)
-		-	[strides](#matrix-strides)
-		-	[length](#matrix-length)
-		-	[nbytes](#matrix-nbytes)
-		-	[data](#matrix-data)
-		-	[get](#matrix-get)
-		-	[set](#matrix-set)
-	-	[Constructor](#matrix-constructor)
-	-	[Raw](#matrix-raw)
-1. [Examples](#examples)
-
-
 ## Installation
 
 ``` bash
@@ -248,7 +232,7 @@ __Note__: out-of-bounds subscripts will silently fail.
 <a name="matrix-constructor"></a>
 ### Constructor
 
-Every `Matrix` has a constructor having the following interface...
+A `Matrix` has a constructor having the following interface...
 
 
 #### mat.constructor( data, shape, dtype )
@@ -317,7 +301,7 @@ var mat = matrix.raw( data, [5,2], 'float32' );
 
 ### Notes
 
-* 	The `shape` and `dtype` parameters are the same as the higher-level `Matrix` interface.
+* 	The `shape` and `dtype` parameters are the same as for the higher-level `Matrix` interface.
 *	Specifying a `dtype` does __not__ cast the data to a different storage type. Instead, providing the argument circumvents the need to determine the input `data` type, resulting in increased performance.
 *	`Matrix` properties and methods are the same as for the higher-level API, with the exception that `Matrix` properties are __no__ longer read-only.
 * 	Setting properties is __not__ recommended as the `Matrix` can become corrupted; e.g., incompatible dimensions, out-of-bounds indexing, etc. In contrast to the strict API above, setting `Matrix` properties will __not__ result in an `error` being thrown. Accordingly, property modification may introduce silent bugs. 
