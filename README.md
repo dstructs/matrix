@@ -216,8 +216,17 @@ mat.iset( 7, 25 );
 */
 ```
 
-__Note__: out-of-bounds subscripts will silently fail.
+__Note__: out-of-bounds indices will silently fail.
 
+
+<a name="matrix-sset"></a>
+#### mat.sset( subsequence, value[, thisArg] )
+
+Sets `Matrix` elements according to a specified [subsequence](https://github.com/compute-io/indexspace).
+
+``` javascript
+
+```
 
 
 <a name="matrix-get"></a>
@@ -258,7 +267,7 @@ var value = mat.iget( 7 );
 // returns 7
 ```
 
-__Note__: out-of-bounds subscripts will return a value of `undefined`.
+__Note__: out-of-bounds indices will return a value of `undefined`.
 
 
 ===
@@ -347,7 +356,7 @@ var mat = matrix.raw( data, [5,2], 'float32' );
 
 #### Linear Indexing
 
-A linear `index` corresponds to an element position in a flattened `Matrix` arranged in __row-major__ order. For example, consider an empty 5x2 matrix, its subscripts, and its corresponding linear indices.
+A linear `index` corresponds to an element position in a flattened `Matrix` arranged in __row-major__ order. For example, consider a __zero-filled__ 5x2 matrix, its subscripts, and its corresponding linear indices.
 
 ``` javascript
 /*

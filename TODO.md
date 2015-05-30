@@ -9,9 +9,13 @@ TODO
 3. if provided `data` and not a `dtype`, should determine the type from the `data`
 4. set/get api
 	-	`sset`, `sget`
-		-	handle empty subsequence; empty matrix?
 		-	warn that set values get cast to target matrix dtype
 	-	`mset`, `mget`
 		-	use linear index
-5. 
+5. `toString` method
+6. `toArray` method (???)
+7. 
+8. should we allow negative indices for `iset`, `iget`, etc?
+9. should `set` methods return the `Matrix` instance to allow for method chaining?
+10. 
 
