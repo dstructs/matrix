@@ -292,12 +292,26 @@ Creates a new `Matrix`.
 var data = new Float32Array( 10 );
 
 var mat = matrix.raw( data, [5,2] );
+/*
+	[ 0 0
+	  0 0
+	  0 0
+	  0 0
+	  0 0 ]
+*/
 ```
 
 If the input `data` type is known, `Matrix` creation is significantly faster.
 
 ``` javascript
 var mat = matrix.raw( data, [5,2], 'float32' );
+/*
+	[ 0 0
+	  0 0
+	  0 0
+	  0 0
+	  0 0 ]
+*/
 ```
 
 __Note__: specifying a `dtype` does __not__ cast the data to a different storage type. Instead, providing the argument circumvents the need to determine the input `data` type, resulting in increased performance.
@@ -310,7 +324,7 @@ The `shape` and `dtype` parameters are the same as above.
 
 `Matrix` properties and methods are the same as for the higher-level API, with the exception that the properties are __no__ longer read-only.
 
-Setting properties is __not__ recommended as the `Matrix` can become corrupted; e.g., incompatible dimensions, out-of-bounds indexing, etc. In contrast to the strict API above, setting these properties will __not__ result in an `error` being thrown. Accordingly, modifying the properties may introduce silent bugs. 
+Setting properties is __not__ recommended as the `Matrix` can become corrupted; e.g., incompatible dimensions, out-of-bounds indexing, etc. In contrast to the strict API above, setting these properties will __not__ result in an `error` being thrown. Accordingly, property modification may introduce silent bugs. 
 
 
 <a name="matrix-raw-constructors"></a>
