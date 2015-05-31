@@ -184,7 +184,7 @@ A `Matrix` has the following methods...
 <a name="matrix-set"></a>
 #### mat.set( i, j, value )
 
-Sets a `Matrix` element specified according to the provided subscripts.
+Sets a `Matrix` element located at a row and column index.
 
 ``` javascript
 mat.set( 3, 1, 20 );
@@ -209,7 +209,7 @@ mat
 // returns 24
 ```
 
-__Note__: out-of-bounds subscripts will silently fail.
+__Note__: out-of-bounds row and column indices will silently fail.
 
 
 <a name="matrix-iset"></a>
@@ -234,7 +234,7 @@ __Note__: out-of-bounds indices will silently fail.
 <a name="matrix-sset"></a>
 #### mat.sset( subsequence, value[, thisArg] )
 
-Sets `Matrix` elements according to a specified [`subsequence`](https://github.com/compute-io/indexspace). The `subsequence` must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row subscripts `3,4,5,6` and `5:9` corresponds to column subscripts `5,6,7,8`. The second argument may be either a `number` primitive, a `Matrix` containing values to set, or a callback `function`.
+Sets `Matrix` elements according to a specified [`subsequence`](https://github.com/compute-io/indexspace). The `subsequence` must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row indices `3,4,5,6` and `5:9` corresponds to column indices `5,6,7,8`. The second argument may be either a `number` primitive, a `Matrix` containing values to set, or a callback `function`.
 
 ``` javascript
 var data = new Float32Array( 10*10 );
@@ -272,8 +272,8 @@ submat = mat.sget( '3:7,5:9' );
 
 A callback is provided four arguments:
 *	__d__: value at a subsequence index
-*	__i__: row subscript
-*	__j__: column subscript
+*	__i__: row index
+*	__j__: column index
 *	__idx__: linear index
 
 and is __expected__ to return a `number` primitive or a value which can be cast to a `number` primitive. 
@@ -316,7 +316,7 @@ __Notes__:
 <a name="matrix-get"></a>
 #### mat.get( i, j )
 
-Returns a `Matrix` element specified according to the provided subscripts.
+Returns a `Matrix` element located at a row and column index.
 
 ``` javascript
 var data = new Float32Array( 10 );
@@ -338,7 +338,7 @@ var values = mat.get( 3, 1 );
 // returns 7
 ```
 
-__Note__: out-of-bounds subscripts will return a value of `undefined`.
+__Note__: out-of-bounds row and column indices will return a value of `undefined`.
 
 
 <a name="matrix-iget"></a>
@@ -357,7 +357,7 @@ __Note__: out-of-bounds indices will return a value of `undefined`.
 <a name="matrix-sget"></a>
 #### mat.sget( subsequence )
 
-Returns `Matrix` elements in a new `Matrix` according to a specified [`subsequence`](https://github.com/compute-io/indexspace). The `subsequence` must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row subscripts `3,4,5,6` and `5:9` corresponds to column subscripts `5,6,7,8`. If no `subsequence` subscripts correspond to `Matrix` elements, the method returns an empty `Matrix`.
+Returns `Matrix` elements in a new `Matrix` according to a specified [`subsequence`](https://github.com/compute-io/indexspace). The `subsequence` must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row indices `3,4,5,6` and `5:9` corresponds to column indices `5,6,7,8`. If a `subsequence` does not correspond to any `Matrix` elements, the method returns an empty `Matrix`.
 
 ``` javascript
 var submatrix;
