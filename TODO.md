@@ -25,5 +25,6 @@ TODO
 	-	separate module? => `compute-print-matrix`
 	-	does not seem essential to core functionality
 11. validate.io-matrix / validate.io-matrix-like
-12. 
+12. benchmark fancy (subsequence) get versus normal `get`
+13. 
 

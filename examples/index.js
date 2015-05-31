@@ -14,19 +14,3 @@ mat.set( 1, 1, 5  );
 
 // Confirm that the matrix element was set:
 console.log( mat.get( 1, 1 ) );
-
-
-var arr = new Float32Array( 10*10 );
-
-for ( var i = 0; i < arr.length; i++ ) {
-	arr[ i ] = i;
-}
-
-mat = matrix( arr, [10,10] );
-
-console.log( mat.sget( '3:7,5:9' ) );
-
-var mat1 = matrix( [2,2], 'float32' );
-
-mat.sset( '4:6,6:8', mat1 );
-console.log( mat.sget( '3:7,5:9' ) );

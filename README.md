@@ -222,7 +222,7 @@ __Note__: out-of-bounds indices will silently fail.
 <a name="matrix-sset"></a>
 #### mat.sset( subsequence, value[, thisArg] )
 
-Sets `Matrix` elements according to a specified [subsequence](https://github.com/compute-io/indexspace). The subsequence must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row subscripts `3,4,5,6` and `5:9` corresponds to column subscripts `5,6,7,8`. The second argument may be either a `number` primitive, a `Matrix` containing values to set, or a callback `function`.
+Sets `Matrix` elements according to a specified [`subsequence`](https://github.com/compute-io/indexspace). The `subsequence` must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row subscripts `3,4,5,6` and `5:9` corresponds to column subscripts `5,6,7,8`. The second argument may be either a `number` primitive, a `Matrix` containing values to set, or a callback `function`.
 
 ``` javascript
 var data = new Float32Array( 10*10 );
@@ -345,7 +345,7 @@ __Note__: out-of-bounds indices will return a value of `undefined`.
 <a name="matrix-sget"></a>
 #### mat.sget( subsequence )
 
-Returns `Matrix` elements in a new `Matrix` according to a specified [`subsequence`](https://github.com/compute-io/indexspace). The subsequence must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row subscripts `3,4,5,6` and `5:9` corresponds to column subscripts `5,6,7,8`. If no `subsequence` subscripts correspond to `Matrix` elements, the method return an empty `Matrix`.
+Returns `Matrix` elements in a new `Matrix` according to a specified [`subsequence`](https://github.com/compute-io/indexspace). The `subsequence` must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row subscripts `3,4,5,6` and `5:9` corresponds to column subscripts `5,6,7,8`. If no `subsequence` subscripts correspond to `Matrix` elements, the method returns an empty `Matrix`.
 
 ``` javascript
 var submatrix;
@@ -359,7 +359,7 @@ submatrix = mat.sget( ':,:' ); // Copy a matrix
 	  8 9 ]
 */
 
-submatrix = mat.sget( '1:5,:' );
+submatrix = mat.sget( '1:4,:' );
 /*
 	[ 2 3
 	  4 5
@@ -384,13 +384,15 @@ submatrix = mat.sget( ':,::-1' ); // flip left-to-right
 	  9 8 ]
 */
 
-submarix = mat.sget( '50:100,:' );
+submatrix = mat.sget( '50:100,:' );
 /*
 	[]
 */
 ```
 
 For further subsequence documentation, see [compute-indexspace](https://github.com/compute-io/indexspace).
+
+
 
 
 ===
