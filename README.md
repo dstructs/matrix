@@ -222,7 +222,7 @@ __Note__: out-of-bounds indices will silently fail.
 <a name="matrix-sset"></a>
 #### mat.sset( subsequence, value[, thisArg] )
 
-Sets `Matrix` elements according to a specified [subsequence](https://github.com/compute-io/indexspace). The subsequence must specify __both__ row and column subsequences; e.g., `'3:6,5:10'`, where `3:6` corresponds to row subscripts `3,4,5` and `5:10` corresponds to column subscripts `5,6,7,8,9`. `value` may be either a single `number` primitive, a `Matrix` containing values to set, or a callback `function`.
+Sets `Matrix` elements according to a specified [subsequence](https://github.com/compute-io/indexspace). The subsequence must specify __both__ row and column subsequences; e.g., `'3:6,5:10'`, where `3:6` corresponds to row subscripts `3,4,5` and `5:10` corresponds to column subscripts `5,6,7,8,9`. The second argument may be either a `number` primitive, a `Matrix` containing values to set, or a callback `function`.
 
 ``` javascript
 var data = new Float32Array( 10*10 );
@@ -264,11 +264,10 @@ A callback is provided four arguments:
 *	__j__: column subscript
 *	__idx__: linear index
 
-and is __expected__ to return a `number` primitive. 
+and is __expected__ to return a `number` primitive or a value which can be cast to a `number` primitive. 
 
 ``` javascript
 function set( d, i, j, idx ) {
-	// Rely on the native typed array implementation to cast to a number:
 	return '' + j + i;
 }
 
