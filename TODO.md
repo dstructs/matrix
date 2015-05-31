@@ -20,7 +20,7 @@ TODO
 6. `toArray` method (???)
 7. 
 8. should we allow negative indices for `iset`, `iget`, etc?
-9. should `set` methods return the `Matrix` instance to allow for method chaining?
+9. 
 10. pretty print a matrix
 	-	separate module? => `compute-print-matrix`
 	-	does not seem essential to core functionality

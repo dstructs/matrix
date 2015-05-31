@@ -197,6 +197,18 @@ mat.set( 3, 1, 20 );
 */
 ```
 
+Set methods return the `Matrix` instance and are thus chainable.
+
+``` javascript
+mat
+	.set( 3, 1, 21 )
+	.set( 3, 1, 22 )
+	.set( 3, 1, 23 )
+	.set( 3, 1, 24 )
+	.get( 3, 1 );
+// returns 24
+```
+
 __Note__: out-of-bounds subscripts will silently fail.
 
 
