@@ -8,15 +8,22 @@ TODO
 		-	document what input `data` is accepted 
 3. if provided `data` and not a `dtype`, should determine the type from the `data`
 4. set/get api
-	-	`sset`
+	-	`sset`, `sget`
+		-	should `sget` also accept a callback?
+			-	provides a shortcut for doing map-type ops
+		-	and should `sset` accept a callback?
+			-	essentially an in-place map
 	-	`mset`, `mget`
 		-	use linear index
 5. `toString` method
-	-	`'[a00,a01;a10,a11;a20,a21]'` => use semicolons to demarcate rows
+	-	`'a00,a01;a10,a11;a20,a21'` => use semicolons to demarcate rows
 6. `toArray` method (???)
 7. 
 8. should we allow negative indices for `iset`, `iget`, etc?
 9. should `set` methods return the `Matrix` instance to allow for method chaining?
 10. pretty print a matrix
-11. 
+	-	separate module? => `compute-print-matrix`
+	-	does not seem essential to core functionality
+11. validate.io-matrix / validate.io-matrix-like
+12. 
 

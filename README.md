@@ -222,7 +222,7 @@ __Note__: out-of-bounds indices will silently fail.
 <a name="matrix-sset"></a>
 #### mat.sset( subsequence, value[, thisArg] )
 
-Sets `Matrix` elements according to a specified [subsequence](https://github.com/compute-io/indexspace). The subsequence must specify __both__ row and column subsequences; e.g., `'3:6,5:10'`, where `3:6` corresponds to row subscripts `3,4,5` and `5:10` corresponds to column subscripts `5,6,7,8,9`. The second argument may be either a `number` primitive, a `Matrix` containing values to set, or a callback `function`.
+Sets `Matrix` elements according to a specified [subsequence](https://github.com/compute-io/indexspace). The subsequence must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row subscripts `3,4,5,6` and `5:9` corresponds to column subscripts `5,6,7,8`. The second argument may be either a `number` primitive, a `Matrix` containing values to set, or a callback `function`.
 
 ``` javascript
 var data = new Float32Array( 10*10 );
@@ -340,6 +340,57 @@ var value = mat.iget( 7 );
 ```
 
 __Note__: out-of-bounds indices will return a value of `undefined`.
+
+
+<a name="matrix-sget"></a>
+#### mat.sget( subsequence )
+
+Returns `Matrix` elements in a new `Matrix` according to a specified [`subsequence`](https://github.com/compute-io/indexspace). The subsequence must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row subscripts `3,4,5,6` and `5:9` corresponds to column subscripts `5,6,7,8`. If no `subsequence` subscripts correspond to `Matrix` elements, the method return an empty `Matrix`.
+
+``` javascript
+var submatrix;
+
+submatrix = mat.sget( ':,:' ); // Copy a matrix
+/*
+	[ 0 1
+	  2 3
+	  4 5 
+	  6 7
+	  8 9 ]
+*/
+
+submatrix = mat.sget( '1:5,:' );
+/*
+	[ 2 3
+	  4 5
+	  6 7 ]
+*/
+
+submatrix = mat.sget( '::-1,:' ); // flip top-to-bottom
+/*
+	[ 8 9
+	  6 7
+	  4 5
+	  2 3
+	  0 1 ]
+*/
+
+submatrix = mat.sget( ':,::-1' ); // flip left-to-right
+/*
+	[ 1 0
+	  3 2
+	  5 4
+	  7 6
+	  9 8 ]
+*/
+
+submarix = mat.sget( '50:100,:' );
+/*
+	[]
+*/
+```
+
+For further subsequence documentation, see [compute-indexspace](https://github.com/compute-io/indexspace).
 
 
 ===
