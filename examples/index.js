@@ -24,9 +24,9 @@ for ( var i = 0; i < arr.length; i++ ) {
 
 mat = matrix( arr, [10,10] );
 
-console.log( mat.sget( '3:6,5:9' ) );
+console.log( mat.sget( '3:7,5:9' ) );
 
 var mat1 = matrix( [2,2], 'float32' );
 
 mat.sset( '4:6,6:8', mat1 );
-console.log( mat.sget( '3:6,5:9' ) );
+console.log( mat.sget( '3:7,5:9' ) );

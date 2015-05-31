@@ -8,15 +8,15 @@ TODO
 		-	document what input `data` is accepted 
 3. if provided `data` and not a `dtype`, should determine the type from the `data`
 4. set/get api
-	-	`sset`, `sget`
-		-	warn that set values get cast to target matrix dtype
-		-	warn that when provided a `Matrix`, it must have the correct dimensions
+	-	`sset`
 	-	`mset`, `mget`
 		-	use linear index
 5. `toString` method
+	-	`'[a00,a01;a10,a11;a20,a21]'` => use semicolons to demarcate rows
 6. `toArray` method (???)
 7. 
 8. should we allow negative indices for `iset`, `iget`, etc?
 9. should `set` methods return the `Matrix` instance to allow for method chaining?
-10. 
+10. pretty print a matrix
+11. 
 
