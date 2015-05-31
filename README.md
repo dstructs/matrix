@@ -222,11 +222,55 @@ __Note__: out-of-bounds indices will silently fail.
 <a name="matrix-sset"></a>
 #### mat.sset( subsequence, value[, thisArg] )
 
-Sets `Matrix` elements according to a specified [subsequence](https://github.com/compute-io/indexspace).
+Sets `Matrix` elements according to a specified [subsequence](https://github.com/compute-io/indexspace). `value` may be either a single `number` primitive, a `Matrix` containing values to set, or a callback `function`.
+
+``` javascript
+var data = new Float32Array( 10*10 );
+
+for ( var i = 0; i < data.length; i++ ) {
+	data[ i ] = i;
+}
+
+var mat = matrix( data, [10,10] );
+
+var submat = mat.sget( '3:6,5:9' );
+/*
+	[ 35 36 37 38
+	  45 46 47 48
+	  55 56 57 58 ]
+*/
+
+var zeros = matrix( [2,2], 'float32' );
+
+mat.sset( '4:6,6:8', zeros );
+
+submat = mat.sget( '3:6,5:9' );
+/*
+	[ 35 36 37 38
+	  45  0  0 48
+	  55  0  0 58 ]
+*/
+```
+
+A callback is provided four arguments:
+*	__d__: value at a subsequence index
+*	__i__: row subscript
+*	__j__: column subscript
+*	__idx__: linear index
+
+The callback is __expected__ to return a `number` primitive. 
 
 ``` javascript
 
 ```
+
+By default, the callback `this` context is set to the `Matrix` instance. To specify a different `this` context, provide a `thisArg`.
+
+``` javascript
+
+```
+
+For further subsequence documentation, see [compute-indexspace](https://github.com/compute-io/indexspace).
 
 
 <a name="matrix-get"></a>

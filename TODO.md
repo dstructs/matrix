@@ -10,6 +10,7 @@ TODO
 4. set/get api
 	-	`sset`, `sget`
 		-	warn that set values get cast to target matrix dtype
+		-	warn that when provided a `Matrix`, it must have the correct dimensions
 	-	`mset`, `mget`
 		-	use linear index
 5. `toString` method
