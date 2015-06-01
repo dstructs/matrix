@@ -367,9 +367,9 @@ __Note__: out-of-bounds indices will return a value of `undefined`.
 
 
 <a name="matrix-mget"></a>
-#### mat.mget( i[, j] )
+#### mat.mget( idx[, cols] )
 
-Returns multiple `Matrix` elements. If provided a single argument, `i` is treated as an `array` of linear [indices](#linear-indexing) (`index >= 0`). Otherwise, `i` and `j` are `integer` arrays which specify rows and column indices.
+Returns multiple `Matrix` elements. If provided a single argument, `idx` is treated as an `array` of linear [indices](#linear-indexing) (`index >= 0`). Otherwise, `idx` and `cols` are `integer` arrays which specify rows and column indices.
 
 ``` javascript
 var data = new Int8Array( 10 );
@@ -399,7 +399,7 @@ var mat1 = mat.mget( [1,3,2], [1] );
 */
 ```
 
-If `i` or `j` is `null`, all rows (columns) are extracted.
+If `idx` or `cols` is `null`, all rows (columns) are extracted.
 
 ```
 // Replicate a column:
