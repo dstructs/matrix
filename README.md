@@ -91,7 +91,7 @@ A `Matrix` has the following properties...
 
 
 <a name="matrix-dtype" class="read-only-property"></a>
-##### dtype
+##### <a><i>#</i></a> <i>dtype</i>
 
 A __read-only__ property returning the underlying storage data type.
 
@@ -101,7 +101,7 @@ var dtype = mat.dtype;
 ```
 
 <a name="matrix-ndims" class="read-only-property"></a>
-##### ndims
+##### <a><i>#</i></a> <i>ndims</i>
 
 A __read-only__ property returning the number of dimensions.
 
@@ -111,7 +111,7 @@ var ndims = mat.ndims;
 ```
 
 <a name="matrix-shape" class="read-only-property"></a>
-##### shape
+##### <a><i>#</i></a> <i>shape</i>
 
 A __read-only__ property returning the matrix `shape`.
 
