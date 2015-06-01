@@ -14,5 +14,17 @@ TODO
 
 #### Tests
 
-1. everything
+1. getType
+2. matrix
+3. matrix.raw
+4. mget
+5. mget.raw
+6. mset
+7. mset.raw
+8. sget
+9. sget.raw
+10. sset
+11. sset.raw
+12. ctor
+13. ctor.raw
 
