@@ -91,7 +91,7 @@ A `Matrix` has the following properties...
 
 
 <a name="matrix-dtype" class="read-only-property"></a>
-#### dtype
+##### dtype
 
 A __read-only__ property returning the underlying storage data type.
 
@@ -101,7 +101,7 @@ var dtype = mat.dtype;
 ```
 
 <a name="matrix-ndims" class="read-only-property"></a>
-#### ndims
+##### ndims
 
 A __read-only__ property returning the number of dimensions.
 
@@ -111,7 +111,7 @@ var ndims = mat.ndims;
 ```
 
 <a name="matrix-shape" class="read-only-property"></a>
-#### shape
+##### shape
 
 A __read-only__ property returning the matrix `shape`.
 
@@ -121,7 +121,7 @@ var shape = mat.shape;
 ```
 
 <a name="matrix-strides" class="read-only-property"></a>
-#### strides
+##### strides
 
 A __read-only__ property returning the `strides` used to index into the underlying data store.
 
@@ -131,7 +131,7 @@ var strides = mat.strides;
 ```
 
 <a name="matrix-length" class="read-only-property"></a>
-#### length
+##### length
 
 A __read-only__ property returning the matrix `length`; i.e., how many elements are in the `Matrix`, similar to `Array#length`.
 
@@ -156,7 +156,7 @@ value = mat[ 3 ];
 ```
 
 <a name="matrix-nbytes" class="read-only-property"></a>
-#### nbytes
+##### nbytes
 
 A __read-only__ property returning the number of bytes consumed by the `Matrix` elements.
 
@@ -166,7 +166,7 @@ var nbytes = mat.nbytes;
 ```
 
 <a name="matrix-data" class="read-only-property"></a>
-#### data
+##### data
 
 A __read-only__ property pointing to the underlying storage array.
 
