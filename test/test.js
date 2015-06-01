@@ -7,7 +7,7 @@ var // Expectation library:
 	chai = require( 'chai' ),
 
 	// Module to be tested:
-	lib = require( './../lib' );
+	matrix = require( './../lib' );
 
 
 // VARIABLES //
@@ -21,9 +21,11 @@ var expect = chai.expect,
 describe( 'compute-matrix', function tests() {
 
 	it( 'should export a function', function test() {
-		expect( lib ).to.be.a( 'function' );
+		expect( matrix ).to.be.a( 'function' );
 	});
 
-	it( 'should do something' );
+	it( 'should export a lower-level (raw) interface', function test() {
+		expect( matrix.raw ).to.be.a( 'function' );
+	});
 
 });
