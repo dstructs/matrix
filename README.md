@@ -240,6 +240,95 @@ mat.iset( -3, 20 );
 __Note__: out-of-bounds indices will silently fail.
 
 
+<a name="matrix-mset"></a>
+#### mat.mset( idx[, cols], value[, thisArg] )
+
+Sets multiple `Matrix` elements. If provided a single `array`, `idx` is treated as an `array` of [linear indices](#linear-indexing). The `value` argument may be either a `number` primitive, a `Matrix` containing values to set, or a callback `function`.
+
+``` javascript
+var data = new Int8Array( 10*10 );
+
+for ( var i = 0; i < data.length; i++ ) {
+	data[ i ] = i;
+}
+// Create a 10x10 matrix:
+var mat = matrix( data, [10,10] );
+
+var submat = mat.mget( [0,2,4], [1,4,5] );
+/*
+	[  1  4  5
+	  21 24 25
+	  41 44 45 ]
+*/
+
+mat.mset( [1,4,5,21,24,25,41,44,45], 5 );
+
+submat = mat.mget( [0,2,4], [1,4,5] );
+/*
+	[ 5 5 5
+	  5 5 5
+	  5 5 5 ]
+*/
+
+var zeros = matrix( [1,3], 'int8' );
+/*
+	[ 0 0 0 ]
+*/
+
+mat.mset( [2], [1,4,5], zeros );
+
+submat = mat.mget( [0,2,4], [1,4,5] );
+/*
+	[ 5 5 5
+	  0 0 0
+	  5 5 5 ]
+*/
+```
+
+A callback is provided four arguments:
+*	__d__: current value
+*	__i__: row index
+*	__j__: column index
+*	__idx__: linear index
+
+and is __expected__ to return a `number` primitive or a value which can be cast to a `number` primitive.
+
+``` javascript
+function set( d, i, j, idx ) {
+	return '' + j + i;
+}
+
+mat.mset( [0], [1,4,5], set );
+
+mat.mget( [0,2,4], [1,4,5] );
+/*
+	[ 10 40 50
+	   0  0  0
+	   5  5  5 ]
+*/
+```
+
+By default, the callback `this` context is set to the `Matrix` instance. To specify a different `this` context, provide a `thisArg`.
+
+``` javascript
+function set( d, i, j, idx ) {
+	console.log( this );
+	// returns null
+	return '' + j + i;
+}
+
+mat.mset( [0], [1,4,5], set, null );
+```
+
+
+__Notes__:
+*	Negative indices are __not__ permitted.
+*	Values which are set are cast to the target `Matrix` data type.
+*	A value `Matrix` must have dimensions which match the submatrix defined by row and column indices.
+*	If linear indices are provided, a value `Matrix` must have a `length` equal to the number of provided indices.
+
+
+
 <a name="matrix-sset"></a>
 #### mat.sset( subsequence, value[, thisArg] )
 
