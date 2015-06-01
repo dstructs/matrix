@@ -84,14 +84,14 @@ var mat = matrix( data, [2,2], 'uint32' );
 ```
 
 
-===
+---
 ### Properties
 
 A `Matrix` has the following properties...
 
 
 <a name="matrix-dtype" class="read-only-property"></a>
-#### mat.dtype
+#### dtype
 
 A __read-only__ property returning the underlying storage data type.
 
@@ -101,7 +101,7 @@ var dtype = mat.dtype;
 ```
 
 <a name="matrix-ndims" class="read-only-property"></a>
-#### mat.ndims
+#### ndims
 
 A __read-only__ property returning the number of dimensions.
 
@@ -111,7 +111,7 @@ var ndims = mat.ndims;
 ```
 
 <a name="matrix-shape" class="read-only-property"></a>
-#### mat.shape
+#### shape
 
 A __read-only__ property returning the matrix `shape`.
 
@@ -121,7 +121,7 @@ var shape = mat.shape;
 ```
 
 <a name="matrix-strides" class="read-only-property"></a>
-#### mat.strides
+#### strides
 
 A __read-only__ property returning the `strides` used to index into the underlying data store.
 
@@ -131,7 +131,7 @@ var strides = mat.strides;
 ```
 
 <a name="matrix-length" class="read-only-property"></a>
-#### mat.length
+#### length
 
 A __read-only__ property returning the matrix `length`; i.e., how many elements are in the `Matrix`, similar to `Array#length`.
 
@@ -156,7 +156,7 @@ value = mat[ 3 ];
 ```
 
 <a name="matrix-nbytes" class="read-only-property"></a>
-#### mat.nbytes
+#### nbytes
 
 A __read-only__ property returning the number of bytes consumed by the `Matrix` elements.
 
@@ -166,7 +166,7 @@ var nbytes = mat.nbytes;
 ```
 
 <a name="matrix-data" class="read-only-property"></a>
-#### mat.data
+#### data
 
 A __read-only__ property pointing to the underlying storage array.
 
@@ -175,14 +175,16 @@ var data = mat.data;
 // returns <TypedArray>
 ```
 
-===
+---
 ### Methods
 
 A `Matrix` has the following methods...
 
 
+#### Set Methods
+
 <a name="matrix-set"></a>
-#### mat.set( i, j, value )
+##### Matrix.prototype.set( i, j, value )
 
 Sets a `Matrix` element located at a row and column index.
 
@@ -213,7 +215,7 @@ __Note__: out-of-bounds row and column indices will silently fail.
 
 
 <a name="matrix-iset"></a>
-#### mat.iset( index, value )
+##### Matrix.prototype.iset( index, value )
 
 Sets a `Matrix` element located at a specified [`index`](#linear-indexing). If `index < 0`, the index refers to a position relative to the `Matrix` length, where `index = -1` corresponds to the last element. 
 
@@ -241,7 +243,7 @@ __Note__: out-of-bounds indices will silently fail.
 
 
 <a name="matrix-mset"></a>
-#### mat.mset( idx[, cols], value[, thisArg] )
+##### Matrix.prototype.mset( idx[, cols], value[, thisArg] )
 
 Sets multiple `Matrix` elements. If provided a single `array`, `idx` is treated as an `array` of [linear indices](#linear-indexing). The `value` argument may be either a `number` primitive, a `Matrix` containing values to set, or a callback `function`.
 
@@ -330,7 +332,7 @@ __Notes__:
 
 
 <a name="matrix-sset"></a>
-#### mat.sset( subsequence, value[, thisArg] )
+##### Matrix.prototype.sset( subsequence, value[, thisArg] )
 
 Sets `Matrix` elements according to a specified [`subsequence`](https://github.com/compute-io/indexspace). The `subsequence` must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row indices `3,4,5,6` and `5:9` corresponds to column indices `5,6,7,8`. The second argument may be either a `number` primitive, a `Matrix` containing values to set, or a callback `function`.
 
@@ -411,8 +413,11 @@ __Notes__:
 *	For further subsequence documentation, see [compute-indexspace](https://github.com/compute-io/indexspace).
 
 
+===
+#### Get Methods
+
 <a name="matrix-get"></a>
-#### mat.get( i, j )
+##### Matrix.prototype.get( i, j )
 
 Returns a `Matrix` element located at a row and column index.
 
@@ -440,7 +445,7 @@ __Note__: out-of-bounds row and column indices will return a value of `undefined
 
 
 <a name="matrix-iget"></a>
-#### mat.iget( index )
+##### Matrix.prototype.iget( index )
 
 Returns a `Matrix` element located at a specified [`index`](#linear-indexing). If `index < 0`, the index refers to a position relative to the `Matrix` length, where `index = -1` corresponds to the last element. 
 
@@ -456,7 +461,7 @@ __Note__: out-of-bounds indices will return a value of `undefined`.
 
 
 <a name="matrix-mget"></a>
-#### mat.mget( idx[, cols] )
+##### Matrix.prototype.mget( idx[, cols] )
 
 Returns multiple `Matrix` elements. If provided a single argument, the method treats `idx` as an `array` of linear [indices](#linear-indexing) (`idx[i] >= 0`) and returns a plain `array` of numeric values. Otherwise, `idx` and `cols` are `integer` arrays which specify row and column indices and the method returns a new `Matrix` instance.
 
@@ -517,7 +522,7 @@ __Note__: out-of-bounds indices are ignored.
 
 
 <a name="matrix-sget"></a>
-#### mat.sget( subsequence )
+##### Matrix.prototype.sget( subsequence )
 
 Returns `Matrix` elements in a new `Matrix` according to a specified [`subsequence`](https://github.com/compute-io/indexspace). The `subsequence` must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row indices `3,4,5,6` and `5:9` corresponds to column indices `5,6,7,8`. If a `subsequence` does not correspond to any `Matrix` elements, the method returns an empty `Matrix`.
 
@@ -568,8 +573,10 @@ For further subsequence documentation, see [compute-indexspace](https://github.c
 
 
 
+#### Accessor Methods
+
 <a name="matrix-tostring"></a>
-#### mat.toString()
+##### Matrix.prototype.toString()
 
 Returns a `string` representation of a `Matrix`. This method is similar to [`Array#toString`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString), except that rows are delineated by __semicolons__ and column values are delineated by __commas__.
 
@@ -603,7 +610,7 @@ for ( i = 0; i < rows.length; i++ ) {
 ```
 
 
-===
+---
 <a name="matrix-constructor"></a>
 ### Constructor
 
@@ -636,7 +643,7 @@ var mat2 = new mat1.constructor( data, [2,5], 'float32' );
 __Note__: while more performant, constructing a `Matrix` in this manner should be carefully considered. Arguments are not validated or sanity checked.
 
 
-===
+---
 ### Raw
 
 For performance, a lower-level interface is provided which forgoes some of the guarantees of the above API, such as input argument validation and measures to prevent `Matrices` from becoming corrupted. While use of the above API is encouraged in REPL environments, use of the lower-level interface may be warranted when arguments are of a known type or when many `Matrices` must be created.

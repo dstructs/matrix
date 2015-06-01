@@ -7,8 +7,12 @@ TODO
 		-	document this discrepancy
 		-	document what input `data` is accepted 
 3. if provided `data` and not a `dtype`, should determine the type from the `data`
-4. set/get api
-	-	`mset`
-5.validate.io-matrix / validate.io-matrix-like
-6. 
+4.validate.io-matrix / validate.io-matrix-like
+5. 
+
+
+
+#### Tests
+
+1. everything
 
