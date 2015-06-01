@@ -33,7 +33,6 @@ describe( 'matrix.raw#iget', function tests() {
 
 	it( 'should export a function', function test() {
 		expect( iget ).to.be.a( 'function' );
-		expect( mat.iget ).to.be.a( 'function' );
 	});
 
 	it( 'should return a Matrix element', function test() {

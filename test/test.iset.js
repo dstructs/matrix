@@ -33,7 +33,6 @@ describe( 'matrix#iset', function tests() {
 
 	it( 'should export a function', function test() {
 		expect( iset ).to.be.a( 'function' );
-		expect( mat.iset ).to.be.a( 'function' );
 	});
 
 	it( 'should throw an error if not provided an integer', function test() {

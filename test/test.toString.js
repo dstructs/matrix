@@ -25,8 +25,6 @@ describe( 'matrix#toString', function tests() {
 
 	it( 'should export a function', function test() {
 		expect( toString ).to.be.a( 'function' );
-		expect( matrix( [10,10] ).toString ).to.be.a( 'function' );
-		expect( matrix.raw( [10,10] ).toString ).to.be.a( 'function' );
 	});
 
 	it( 'should convert a Matrix instance to a string', function test() {

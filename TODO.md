@@ -25,6 +25,4 @@ TODO
 9. sget.raw
 10. sset
 11. sset.raw
-12. ctor
-13. ctor.raw
 

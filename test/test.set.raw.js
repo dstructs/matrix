@@ -33,7 +33,6 @@ describe( 'matrix.raw#set', function tests() {
 
 	it( 'should export a function', function test() {
 		expect( set ).to.be.a( 'function' );
-		expect( mat.set ).to.be.a( 'function' );
 	});
 
 	it( 'should set a Matrix element', function test() {

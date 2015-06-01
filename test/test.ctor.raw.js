@@ -59,6 +59,10 @@ describe( 'Matrix.raw', function tests() {
 		assert.isFunction( mat.sget );
 	});
 
+	it( 'should create a Matrix having a custom toString method', function test() {
+		assert.isFunction( mat.toString );
+	});
+
 	it( 'should create a Matrix having a dtype property', function test() {
 		assert.isTrue( mat.hasOwnProperty( 'dtype' ) );
 		assert.isString( mat.dtype );

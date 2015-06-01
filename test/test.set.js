@@ -33,7 +33,6 @@ describe( 'matrix#set', function tests() {
 
 	it( 'should export a function', function test() {
 		expect( set ).to.be.a( 'function' );
-		expect( mat.set ).to.be.a( 'function' );
 	});
 
 	it( 'should throw an error if provided a row index which is not a nonnegative integer', function test() {
