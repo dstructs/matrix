@@ -576,7 +576,7 @@ __Notes__:
 *	For further subsequence documentation, see [compute-indexspace](https://github.com/compute-io/indexspace).
 
 
-
+===
 ### Accessor Methods
 
 <a name="matrix-tostring"></a>
@@ -685,8 +685,7 @@ var mat = matrix.raw( data, [5,2], 'float32' );
 */
 ```
 
-### Notes
-
+__Notes__:
 * 	The `shape` and `dtype` parameters are the same as for the higher-level `Matrix` interface.
 *	Specifying a `dtype` does __not__ cast the data to a different storage type. Instead, providing the argument circumvents the need to determine the input `data` type, resulting in increased performance.
 *	`Matrix` properties and methods are the same as for the higher-level API, with the exception that `Matrix` properties are __no__ longer read-only and methods do __not__ perform input argument validation.
