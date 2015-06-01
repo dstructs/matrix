@@ -10,7 +10,7 @@ var // Expectation library:
 	matrix = require( './../lib' ).raw,
 
 	// Module to be tested:
-	get = require( './../lib/get.raw.js' );
+	iget = require( './../lib/iget.raw.js' );
 
 
 // VARIABLES //
@@ -21,32 +21,42 @@ var expect = chai.expect,
 
 // TESTS //
 
-describe( 'matrix.raw#get', function tests() {
+describe( 'matrix.raw#iget', function tests() {
 
 	var mat, data;
 
-	data = new Int8Array( 100 );
+	data = new Int32Array( 100 );
 	for ( var i = 0; i < data.length; i++ ) {
-		data[ i ] = i;
+		data[ i ] = i * 2;
 	}
 	mat = matrix( data, [10,10] );
 
 	it( 'should export a function', function test() {
-		expect( get ).to.be.a( 'function' );
-		expect( mat.get ).to.be.a( 'function' );
+		expect( iget ).to.be.a( 'function' );
+		expect( mat.iget ).to.be.a( 'function' );
 	});
 
 	it( 'should return a Matrix element', function test() {
 		var actual, expected;
 
-		actual = mat.get( 5, 6 );
-		expected = 56;
+		actual = mat.iget( 56 );
+		expected = 112;
+
+		assert.strictEqual( actual, expected );
+	});
+
+	it( 'should accept negative indices', function test() {
+		var actual, expected;
+
+		actual = mat.iget( -2 );
+		expected = 196;
 
 		assert.strictEqual( actual, expected );
 	});
 
 	it( 'should return undefined if provided an out-of-bounds index', function test() {
-		assert.isUndefined( mat.get( 500, 100 ) );
+		assert.isUndefined( mat.iget( 1e5 ) );
+		assert.isUndefined( mat.iget( -1e5 ) );
 	});
 
 });

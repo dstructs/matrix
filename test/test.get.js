@@ -93,4 +93,8 @@ describe( 'matrix#get', function tests() {
 		assert.strictEqual( actual, expected );
 	});
 
+	it( 'should return undefined if provided an out-of-bounds index', function test() {
+		assert.isUndefined( mat.get( 500, 100 ) );
+	});
+
 });
