@@ -25,3 +25,9 @@ console.log( mat.sget( ':,::-1' ) );
 
 // Out-of-bounds subsequence:
 console.log( mat.sget( '50:100,:' ) );
+
+// Replicate a column:
+console.log( mat.mget( null, [1,1,1,1,1] ) );
+
+// Tile extracted rows and columns:
+console.log( mat.mget( [1,2,1,2,1,2,1,2], [0,1,0,1,0,1,0,1] ) );

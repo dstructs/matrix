@@ -366,6 +366,67 @@ value = mat.iget( -3 );
 __Note__: out-of-bounds indices will return a value of `undefined`.
 
 
+<a name="matrix-mget"></a>
+#### mat.mget( i[, j] )
+
+Returns multiple `Matrix` elements. If provided a single argument, `i` is treated as an `array` of linear [indices](#linear-indexing) (`index >= 0`). Otherwise, `i` and `j` are `integer` arrays which specify rows and column indices.
+
+``` javascript
+var data = new Int8Array( 10 );
+for ( var i = 0; i < data.length; i++ ) {
+	data[ i ] = i*2;
+}
+
+var mat = matrix( data, [5,2] );
+/*
+	[  0 2
+	   4 6
+	   8 10
+	  12 14
+	  16 18 ]
+*/
+
+// Scramble the second column:
+var vals = mat.mget( [1,5,3,9,7] );
+// returns [2,10,6,18,14]
+
+// Extract select rows and columns in arbitrary order:
+var mat1 = mat.mget( [1,3,2], [1] );
+/*
+	[  4
+	  14
+	   8 ]
+*/
+```
+
+If `i` or `j` is `null`, all rows (columns) are extracted.
+
+```
+// Replicate a column:
+var rep = mat.mget( null, [1,1,1,1,1] );
+/*
+	[  2  2  2  2  2
+	   6  6  6  6  6
+	  10 10 10 10 10
+	  14 14 14 14 14
+	  18 18 18 18 18 ]
+*/
+
+// Tile select rows and columns:
+var tile = mat.mget( [1,2,1,2], [0,1,0,1] );
+/*
+	[
+		4  6 4  6
+		8 10 8 10
+		4  6 4  6
+		8 10 8 10
+	]
+*/
+```
+
+__Note__: out-of-bounds indices are ignored.
+
+
 <a name="matrix-sget"></a>
 #### mat.sget( subsequence )
 
