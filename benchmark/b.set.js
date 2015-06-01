@@ -2,7 +2,7 @@
 
 // MODULES //
 
-var matrix = require( './../lib' );
+var matrix = require( './../lib' ).raw;
 
 
 // VARIABLES //

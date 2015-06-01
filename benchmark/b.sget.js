@@ -2,7 +2,7 @@
 
 // MODULES //
 
-var matrix = require( './../lib' );
+var matrix = require( './../lib' ).raw;
 
 
 // VARIABLES //
@@ -14,7 +14,6 @@ var start,
 	res,
 	len,
 	m, n,
-	v,
 	i, j, k;
 
 

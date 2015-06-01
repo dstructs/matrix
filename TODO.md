@@ -8,11 +8,6 @@ TODO
 		-	document what input `data` is accepted 
 3. if provided `data` and not a `dtype`, should determine the type from the `data`
 4. set/get api
-	-	`sset`, `sget`
-		-	should `sget` also accept a callback?
-			-	provides a shortcut for doing map-type ops
-		-	and should `sset` accept a callback?
-			-	essentially an in-place map
 	-	`mset`, `mget`
 		-	use linear index
 5. 
@@ -23,7 +18,7 @@ TODO
 10. pretty print a matrix
 	-	separate module? => `compute-print-matrix`
 	-	does not seem essential to core functionality
-	- 	what about a general `print` module, which accepts `arrays`, `matrices`, `ndarrays`, and `dataframes`?
+	- 	what about a general `print` module, which accepts `arrays`, `matrices`, `ndarrays`, and `data-frames`?
 		-	similar to `to-matrix`, `to-array`, etc.
 11. validate.io-matrix / validate.io-matrix-like
 12. 
