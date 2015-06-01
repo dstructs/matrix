@@ -215,7 +215,7 @@ __Note__: out-of-bounds row and column indices will silently fail.
 <a name="matrix-iset"></a>
 #### mat.iset( index, value )
 
-Sets a `Matrix` element located at a specified [`index`](#linear-indexing).
+Sets a `Matrix` element located at a specified [`index`](#linear-indexing). If `idx < 0`, the index refers to a position relative to the `Matrix` length, where `idx = -1` corresponds to the last element. 
 
 ``` javascript
 mat.iset( 7, 25 );
@@ -224,6 +224,15 @@ mat.iset( 7, 25 );
 	  2 3
 	  4 5
 	  6 25
+	  8 9 ]
+*/
+
+mat.iset( -3, 20 );
+/*
+	[ 0 1
+	  2 3
+	  4 5
+	  6 20
 	  8 9 ]
 */
 ```
@@ -344,10 +353,13 @@ __Note__: out-of-bounds row and column indices will return a value of `undefined
 <a name="matrix-iget"></a>
 #### mat.iget( index )
 
-Returns a `Matrix` element located at a specified [`index`](#linear-indexing).
+Returns a `Matrix` element located at a specified [`index`](#linear-indexing). If `idx < 0`, the index refers to a position relative to the `Matrix` length, where `idx = -1` corresponds to the last element. 
 
 ``` javascript
 var value = mat.iget( 7 );
+// returns 7
+
+value = mat.iget( -3 );
 // returns 7
 ```
 

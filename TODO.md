@@ -18,7 +18,7 @@ TODO
 5. 
 6. 
 7. 
-8. should we allow negative indices for `iset`, `iget`, etc?
+8.
 9. 
 10. pretty print a matrix
 	-	separate module? => `compute-print-matrix`
