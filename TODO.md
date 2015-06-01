@@ -26,6 +26,6 @@ TODO
 	- 	what about a general `print` module, which accepts `arrays`, `matrices`, `ndarrays`, and `dataframes`?
 		-	similar to `to-matrix`, `to-array`, etc.
 11. validate.io-matrix / validate.io-matrix-like
-12. benchmark fancy (subsequence) get versus normal `get`
+12. 
 13. 
 
