@@ -8,13 +8,16 @@ TODO
 		-	document what input `data` is accepted 
 3. if provided `data` and not a `dtype`, should determine the type from the `data`
 4.validate.io-matrix / validate.io-matrix-like
-5. 
+5. `mget`
+	-	should it return typed array results?
+	-	or just a new 1d matrix or the same data type?
+6. 
 
 
 
 #### Tests
 
-1. getType
+1. 
 2. matrix
 3. matrix.raw
 4. mget
