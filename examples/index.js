@@ -14,3 +14,6 @@ mat.set( 1, 1, 5  );
 
 // Confirm that the matrix element was set:
 console.log( mat.get( 1, 1 ) );
+
+// Convert the matrix to a string:
+console.log( mat.toString() );

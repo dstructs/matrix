@@ -15,15 +15,16 @@ TODO
 			-	essentially an in-place map
 	-	`mset`, `mget`
 		-	use linear index
-5. `toString` method
-	-	`'a00,a01;a10,a11;a20,a21'` => use semicolons to demarcate rows
-6. `toArray` method (???)
+5. 
+6. 
 7. 
 8. should we allow negative indices for `iset`, `iget`, etc?
 9. 
 10. pretty print a matrix
 	-	separate module? => `compute-print-matrix`
 	-	does not seem essential to core functionality
+	- 	what about a general `print` module, which accepts `arrays`, `matrices`, `ndarrays`, and `dataframes`?
+		-	similar to `to-matrix`, `to-array`, etc.
 11. validate.io-matrix / validate.io-matrix-like
 12. benchmark fancy (subsequence) get versus normal `get`
 13. 

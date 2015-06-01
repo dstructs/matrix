@@ -406,6 +406,40 @@ For further subsequence documentation, see [compute-indexspace](https://github.c
 
 
 
+<a name="matrix-tostring"></a>
+#### mat.toString()
+
+Returns a `string` representation of a `Matrix`. This method is similar to [`Array#toString`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString), except that rows are delineated by __semicolons__ and column values are delineated by __commas__.
+
+``` javascript
+var data = new Int8Array( 10 );
+for ( var i = 0; i < data.length; i++ ) {
+	data[ i ] = i;
+}
+
+var mat = matrix( data, [5,2] );
+
+var str = mat.toString();
+// 0,1;2,3;4,5;6,7;8,9
+```
+
+To construct an `array` of `arrays` from the `string` representation,
+
+``` javascript
+var rows,
+	cols,
+	i, j;
+
+rows = str.split( ';' );
+for ( i = 0; i < rows.length; i++ ) {
+	cols = rows[ i ].split( ',' );
+	rows[ i ] = new Array( cols.length );
+	for ( j = 0; j < cols.length; j++ ) {
+		rows[ i ][ j ] = parseFloat( cols[ j ] );
+	}	
+}
+```
+
 
 ===
 <a name="matrix-constructor"></a>
