@@ -133,7 +133,7 @@ var strides = mat.strides;
 <a name="matrix-length" class="read-only-property"></a>
 ##### length
 
-A __read-only__ property returning the matrix `length`; i.e., how many elements are in the `Matrix`, similar to `Array#length`.
+A __read-only__ property returning the matrix `length`; i.e., how many elements are in the `Matrix`, similar to [`Array#length`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length).
 
 ``` javascript
 var len = mat.length;
@@ -325,6 +325,7 @@ mat.mset( [0], [1,4,5], set, null );
 
 __Notes__:
 *	Negative indices are __not__ permitted.
+* 	Out-of-bounds row and column indices will silently fail.
 *	Values which are set are cast to the target `Matrix` data type.
 *	A value `Matrix` must have dimensions which match the submatrix defined by row and column indices.
 *	If linear indices are provided, a value `Matrix` must have a `length` equal to the number of provided indices.
@@ -409,6 +410,7 @@ mat.sset( '4:6,6:8', set, null );
 
 __Notes__:
 *	Values which are set are cast to the target `Matrix` data type.
+* 	Out-of-bounds row and column indices will silently fail.
 *	A provided `Matrix` must have dimensions which match the submatrix defined by row and column subsequences.
 *	For further subsequence documentation, see [compute-indexspace](https://github.com/compute-io/indexspace).
 
@@ -463,7 +465,7 @@ __Note__: out-of-bounds indices will return a value of `undefined`.
 <a name="matrix-mget"></a>
 ##### Matrix.prototype.mget( idx[, cols] )
 
-Returns multiple `Matrix` elements. If provided a single argument, the method treats `idx` as an `array` of linear [indices](#linear-indexing) (`idx[i] >= 0`) and returns a plain `array` of numeric values. Otherwise, `idx` and `cols` are `integer` arrays which specify row and column indices and the method returns a new `Matrix` instance.
+Returns multiple `Matrix` elements. If provided a single argument, the method treats `idx` as an `array` of [linear indices](#linear-indexing) (`idx[i] >= 0`) and returns a plain `array` of numeric values. Otherwise, `idx` and `cols` are `integer` arrays which specify row and column indices and the method returns a new `Matrix` instance.
 
 ``` javascript
 var data = new Int8Array( 10 );
@@ -473,8 +475,8 @@ for ( var i = 0; i < data.length; i++ ) {
 
 var mat = matrix( data, [5,2] );
 /*
-	[  0 2
-	   4 6
+	[  0  2
+	   4  6
 	   8 10
 	  12 14
 	  16 18 ]
@@ -569,7 +571,9 @@ submatrix = mat.sget( '50:100,:' );
 */
 ```
 
-For further subsequence documentation, see [compute-indexspace](https://github.com/compute-io/indexspace).
+__Notes__:
+*	Out-of-bounds indices are ignored.
+*	For further subsequence documentation, see [compute-indexspace](https://github.com/compute-io/indexspace).
 
 
 
