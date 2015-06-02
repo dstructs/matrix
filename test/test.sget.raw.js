@@ -36,10 +36,24 @@ describe( 'matrix.raw#sget', function tests() {
 	});
 
 	it( 'should return values according to a specified subsequence', function test() {
-		var mat1 = mat.sget( '1:3,2:4' );
+		var mat1;
+
+		mat1 = mat.sget( '1:3,2:4' );
 
 		assert.deepEqual( mat1.shape, [2,2] );
 		assert.strictEqual( mat1.toString(), '12,13;22,23' );
+
+		// Flip up-down:
+		mat1 = mat.sget( '2:0:-1,2:4' );
+
+		assert.deepEqual( mat1.shape, [2,2] );
+		assert.strictEqual( mat1.toString(), '22,23;12,13' );
+
+		// Flip left-right:
+		mat1 = mat.sget( '1:3,3:1:-1' );
+
+		assert.deepEqual( mat1.shape, [2,2] );
+		assert.strictEqual( mat1.toString(), '13,12;23,22' );
 	});
 
 	it( 'should return an empty matrix if a subsequence does not have any corresponding matrix elements', function test() {

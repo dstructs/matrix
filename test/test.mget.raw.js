@@ -56,4 +56,14 @@ describe( 'matrix.raw#mget', function tests() {
 		assert.strictEqual( mat1.toString(), '10,11,12,13,14,15,16,17,18,19' );
 	});
 
+	it( 'should not dedupe indices', function test() {
+		var mat1;
+
+		mat1 = mat.mget( [1,1,1,1,2,2] );
+		assert.strictEqual( mat1.toString(), '1,1,1,1,2,2' );
+
+		mat1 = mat.mget( [1,1], [1,2] );
+		assert.strictEqual( mat1.toString(), '11,12;11,12' );
+	});
+
 });

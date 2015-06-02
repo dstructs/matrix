@@ -154,4 +154,14 @@ describe( 'matrix#mget', function tests() {
 		assert.strictEqual( mat1.length, 0 );
 	});
 
+	it( 'should not dedupe indices', function test() {
+		var mat1;
+
+		mat1 = mat.mget( [1,1,1,1,2,2] );
+		assert.strictEqual( mat1.toString(), '1,1,1,1,2,2' );
+
+		mat1 = mat.mget( [1,1], [1,2] );
+		assert.strictEqual( mat1.toString(), '11,12;11,12' );
+	});
+
 });
