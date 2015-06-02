@@ -113,6 +113,7 @@ describe( 'matrix#mget', function tests() {
 	it( 'should return values located at specified linear indices', function test() {
 		var mat1 = mat.mget( [14,28,47] );
 
+		assert.deepEqual( mat1.shape, [1,3] );
 		assert.strictEqual( mat1.toString(), '14,28,47' );
 	});
 

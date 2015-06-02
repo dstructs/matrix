@@ -22,8 +22,8 @@ TODO
 5. 
 6. mset
 7. mset.raw
-8. sget
-9. sget.raw
+8. 
+9. 
 10. sset
 11. sset.raw
 
