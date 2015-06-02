@@ -465,7 +465,7 @@ __Note__: out-of-bounds indices will return a value of `undefined`.
 <a name="matrix-mget"></a>
 #### Matrix.prototype.mget( idx[, cols] )
 
-Returns multiple `Matrix` elements. If provided a single argument, the method treats `idx` as an `array` of [linear indices](#linear-indexing) (`idx[i] >= 0`) and returns a plain `array` of numeric values. Otherwise, `idx` and `cols` are `integer` arrays which specify row and column indices and the method returns a new `Matrix` instance.
+Returns multiple `Matrix` elements. If provided a single argument, the method treats `idx` as an `array` of [linear indices](#linear-indexing) (`idx[i] >= 0`) and returns a new `Matrix` instance having a single row. Otherwise, `idx` and `cols` are `integer` arrays which specify row and column indices and the method returns a new `Matrix` instance having dimensions determined by the number of defined rows and columns.
 
 ``` javascript
 var data = new Int8Array( 10 );
@@ -484,7 +484,9 @@ var mat = matrix( data, [5,2] );
 
 // Scramble the second column:
 var vals = mat.mget( [1,5,3,9,7] );
-// returns [2,10,6,18,14]
+/*
+	[ 2, 10, 6, 18, 14 ]
+*/
 
 // Extract select rows and columns in arbitrary order:
 var mat1 = mat.mget( [1,3,2], [1] );

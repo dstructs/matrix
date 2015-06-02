@@ -6,12 +6,9 @@ TODO
 	- lower-level API should __not__ accept plain `arrays`
 		-	document this discrepancy
 		-	document what input `data` is accepted 
-3. if provided `data` and not a `dtype`, should determine the type from the `data`
+3. 
 4.validate.io-matrix / validate.io-matrix-like
-5. `mget`
-	-	should it return typed array results?
-	-	or just a new 1d matrix or the same data type?
-6. 
+5. 
 
 
 
@@ -19,9 +16,10 @@ TODO
 
 1. 
 2. matrix
-3. matrix.raw
-4. mget
-5. mget.raw
+	-	casting
+3. 
+4. 
+5. 
 6. mset
 7. mset.raw
 8. sget
