@@ -37,6 +37,22 @@ describe( 'matrix.raw#sset', function tests() {
 		expect( sset ).to.be.a( 'function' );
 	});
 
+	it( 'should throw an error if provided a value matrix with dimensions which do not match the dimensions determined by the row and column subsequences', function test() {
+		var m;
+
+		m = matrix( new Int8Array( 2 ), [1,2] );
+		expect( badValue( m ) ).to.throw( Error );
+
+		m = matrix( new Int8Array( 2 ), [2,1] );
+		expect( badValue( m ) ).to.throw( Error );
+
+		function badValue( value ) {
+			return function() {
+				mat.sset( '4:6,6:8', value );
+			};
+		}
+	});
+
 	it( 'should return the Matrix instance', function test() {
 		var m = mat.sset( '4:6,6:8', 5 );
 		assert.strictEqual( mat, m );
