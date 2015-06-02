@@ -6,17 +6,13 @@ TODO
 	- lower-level API should __not__ accept plain `arrays`
 		-	document this discrepancy
 		-	document what input `data` is accepted 
-3. 
-4.validate.io-matrix / validate.io-matrix-like
-5. 
+3.validate.io-matrix / validate.io-matrix-like
+4. 
 
 
 
 #### Tests
 
-1. 
-2. matrix
+1. matrix
 	-	casting
-3. 
-4. mset.raw
-
+2. 
