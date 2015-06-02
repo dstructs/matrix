@@ -42,14 +42,14 @@ describe( 'matrix.raw#mget', function tests() {
 		assert.strictEqual( mat1.toString(), '14,28,47' );
 	});
 
-	it( 'should all rows and select columns', function test() {
+	it( 'should return all rows and select columns', function test() {
 		var mat1 = mat.mget( null, [1] );
 
 		assert.deepEqual( mat1.shape, [10,1] );
 		assert.strictEqual( mat1.toString(), '1;11;21;31;41;51;61;71;81;91' );
 	});
 
-	it( 'should all columns and select rows', function test() {
+	it( 'should return all columns and select rows', function test() {
 		var mat1 = mat.mget( [1], null );
 
 		assert.deepEqual( mat1.shape, [1,10] );

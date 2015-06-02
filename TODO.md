@@ -18,12 +18,5 @@ TODO
 2. matrix
 	-	casting
 3. 
-4. 
-5. 
-6. mset
-7. mset.raw
-8. 
-9. 
-10. sset
-11. sset.raw
+4. mset.raw
 
