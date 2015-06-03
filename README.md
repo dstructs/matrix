@@ -57,7 +57,7 @@ The following `dtypes` are accepted:
 *	`float64`
 
 
-If a __linear__ `numeric array` is not provided, the function initializes a __zero-filled__ matrix. To initialize a matrix, provide an input `data` array, whose length matches the specified `shape`.
+If a __linear__ `numeric array` is not provided, the function initializes a __zero-filled__ matrix. To initialize a matrix, provide a typed input `data` array, whose length matches the specified `shape`.
 
 ``` javascript
 var data = new Int8Array( 6 );
@@ -81,6 +81,22 @@ var mat = matrix( data, [2,2], 'uint32' );
 	[ 0 1
 	  2 3 ]
 */
+```
+
+If provided an `Array` instead of a typed array and no `dtype` is specified, the input `data` array is cast to `float64`.
+
+``` javascript
+var data = [ 10, 20, 30, 40, 50, 60 ];
+
+var mat = matrix( data, [3,2] );
+/*
+	[ 10 20
+	  30 40
+	  50 60 ]
+*/
+
+var dtype = mat.dtype;
+// returns 'float64'
 ```
 
 
@@ -690,6 +706,7 @@ var mat = matrix.raw( data, [5,2], 'float32' );
 __Notes__:
 * 	The `shape` and `dtype` parameters are the same as for the higher-level `Matrix` interface.
 *	Specifying a `dtype` does __not__ cast the data to a different storage type. Instead, providing the argument circumvents the need to determine the input `data` type, resulting in increased performance.
+*	Input `data` __must__ be a typed array. Unlike the higher-level `Matrix` interface, plain `arrays` are __not__ cast to `float64`. Providing a plain `array` can lead to subtle bugs and affect performance.
 *	`Matrix` properties and methods are the same as for the higher-level API, with the exception that `Matrix` properties are __no__ longer read-only and methods do __not__ perform input argument validation.
 * 	Setting properties is __not__ recommended as the `Matrix` can become corrupted; e.g., incompatible dimensions, out-of-bounds indexing, etc. In contrast to the strict API above, setting `Matrix` properties will __not__ result in an `error` being thrown. Accordingly, property modification may introduce silent bugs. 
 *	The lower-level `Matrix` constructor has the same interface as the higher-level `Matrix` constructor.

@@ -43,8 +43,11 @@
     "url": "https://github.com/compute-io/matrix/issues"
   },
   "dependencies": {
+    "compute-cast-arrays": "^1.0.0",
+    "compute-dtype": "^1.0.0",
     "compute-indexspace": "^1.0.1",
     "type-name": "^1.0.1",
+    "validate.io-array": "^1.0.6",
     "validate.io-contains": "^1.0.0",
     "validate.io-function": "^1.0.2",
     "validate.io-integer-primitive": "^1.0.0",
