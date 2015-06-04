@@ -56,10 +56,10 @@ stop = process.hrtime( start );
 
 res[ 0 ] = stop[ 0 ] + stop[ 1 ]*1e-9;
 
-// Subsequence get:
+// Multiple get:
 start = process.hrtime();
 for ( i = 0; i < len; i++ ) {
-	n = m.sget( '64:74,64:74' );
+	n = m.mget( [1,1,5,4,4,2,3,1,9,8], [2,0,0,4,5,6,3,8,4,4] );
 }
 stop = process.hrtime( start );
 
@@ -70,6 +70,6 @@ res[ 1 ] = stop[ 0 ] + stop[ 1 ]*1e-9;
 // RESULTS
 
 console.log( 'get:\t%d ops/sec', Math.floor( len/res[ 0 ] ) );
-console.log( 'sget:\t%d ops/sec', Math.floor( len/res[ 1 ] ) );
+console.log( 'mget:\t%d ops/sec', Math.floor( len/res[ 1 ] ) );
 console.log( '\n' );
 
