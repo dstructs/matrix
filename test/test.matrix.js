@@ -196,8 +196,35 @@ describe( 'matrix', function tests() {
 		assert.strictEqual( mat.dtype, 'uint32' );
 	});
 
-	it( 'should cast input data to a specified type' );
+	it( 'should cast input data to a specified type', function test() {
+		var mat;
 
-	it( 'should cast a plain array to a float64' );
+		mat = matrix( new Int8Array( 10 ), [5,2], 'uint16' );
+		assert.strictEqual( mat.dtype, 'uint16' );
+		assert.strictEqual( mat.data.BYTES_PER_ELEMENT, 2 );
+
+		mat = matrix( new Float32Array( 10 ), [5,2], 'uint8_clamped' );
+		assert.strictEqual( mat.dtype, 'uint8_clamped' );
+		assert.strictEqual( mat.data.BYTES_PER_ELEMENT, 1 );
+
+		mat = matrix( new Uint32Array( 10 ), [5,2], 'float32' );
+		assert.strictEqual( mat.dtype, 'float32' );
+		assert.strictEqual( mat.data.BYTES_PER_ELEMENT, 4 );
+	});
+
+	it( 'should cast a plain array to a float64', function test() {
+		var mat, arr;
+
+		arr = new Array(1,2,3,4,5,6);
+		mat = matrix( arr, [3,2] );
+
+		assert.strictEqual( mat.dtype, 'float64' );
+		assert.strictEqual( mat.data.BYTES_PER_ELEMENT, 8 );
+		assert.strictEqual( mat.data.length, arr.length );
+
+		for ( var i = 0; i < arr.length; i++ ) {
+			assert.strictEqual( arr[ i ], mat.data[ i ] );
+		}
+	});
 
 });
