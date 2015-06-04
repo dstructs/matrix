@@ -83,7 +83,7 @@ var mat = matrix( data, [2,2], 'uint32' );
 */
 ```
 
-If provided an `Array` instead of a typed array and no `dtype` is specified, the input `data` array is cast to `float64`.
+If provided an `Array` instead of a typed array and no `dtype` is specified, the input `data` array is [cast](https://github.com/compute-io/cast-arrays) to `float64`.
 
 ``` javascript
 var data = [ 10, 20, 30, 40, 50, 60 ];
