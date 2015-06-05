@@ -18,7 +18,7 @@ var expect = chai.expect,
 
 // TESTS //
 
-describe( 'compute-matrix', function tests() {
+describe( 'dstructs-matrix', function tests() {
 
 	it( 'should export a function', function test() {
 		expect( matrix ).to.be.a( 'function' );

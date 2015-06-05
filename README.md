@@ -8,7 +8,7 @@ Matrix
 ## Installation
 
 ``` bash
-$ npm install compute-matrix
+$ npm install dstructs-matrix
 ```
 
 For use in the browser, use [browserify](https://github.com/substack/node-browserify).
@@ -17,7 +17,7 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 ## Usage
 
 ``` javascript
-var matrix = require( 'compute-matrix' );
+var matrix = require( 'dstructs-matrix' );
 ```
 
 <a name="matrix"></a>
@@ -737,7 +737,7 @@ A =	  0 0   =>    a20 a21   =>    4 5
 ## Examples
 
 ``` javascript
-var matrix = require( 'compute-matrix' );
+var matrix = require( 'dstructs-matrix' );
 
 // Create a new 2x2 matrix:
 var mat = matrix( [2,2] );
@@ -800,23 +800,23 @@ $ make view-cov
 
 ## Copyright
 
-Copyright &copy; 2015. The Compute.io Authors.
+Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
 
 
-[npm-image]: http://img.shields.io/npm/v/compute-matrix.svg
-[npm-url]: https://npmjs.org/package/compute-matrix
+[npm-image]: http://img.shields.io/npm/v/dstructs-matrix.svg
+[npm-url]: https://npmjs.org/package/dstructs-matrix
 
-[travis-image]: http://img.shields.io/travis/compute-io/matrix/master.svg
-[travis-url]: https://travis-ci.org/compute-io/matrix
+[travis-image]: http://img.shields.io/travis/dstructs-io/matrix/master.svg
+[travis-url]: https://travis-ci.org/dstructs-io/matrix
 
-[coveralls-image]: https://img.shields.io/coveralls/compute-io/matrix/master.svg
-[coveralls-url]: https://coveralls.io/r/compute-io/matrix?branch=master
+[coveralls-image]: https://img.shields.io/coveralls/dstructs-io/matrix/master.svg
+[coveralls-url]: https://coveralls.io/r/dstructs-io/matrix?branch=master
 
-[dependencies-image]: http://img.shields.io/david/compute-io/matrix.svg
-[dependencies-url]: https://david-dm.org/compute-io/matrix
+[dependencies-image]: http://img.shields.io/david/dstructs-io/matrix.svg
+[dependencies-url]: https://david-dm.org/dstructs-io/matrix
 
-[dev-dependencies-image]: http://img.shields.io/david/dev/compute-io/matrix.svg
-[dev-dependencies-url]: https://david-dm.org/dev/compute-io/matrix
+[dev-dependencies-image]: http://img.shields.io/david/dev/dstructs-io/matrix.svg
+[dev-dependencies-url]: https://david-dm.org/dev/dstructs-io/matrix
 
-[github-issues-image]: http://img.shields.io/github/issues/compute-io/matrix.svg
-[github-issues-url]: https://github.com/compute-io/matrix/issues
+[github-issues-image]: http://img.shields.io/github/issues/dstructs-io/matrix.svg
+[github-issues-url]: https://github.com/dstructs-io/matrix/issues

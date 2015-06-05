@@ -1,5 +1,5 @@
 {
-  "name": "compute-matrix",
+  "name": "dstructs-matrix",
   "version": "0.0.0",
   "description": "Matrices.",
   "author": {
@@ -20,7 +20,7 @@
   "main": "./lib",
   "repository": {
     "type": "git",
-    "url": "git://github.com/compute-io/matrix.git"
+    "url": "git://github.com/dstructs/matrix.git"
   },
   "keywords": [
     "compute.io",
@@ -38,10 +38,11 @@
     "structure",
     "data structure",
     "array",
-    "typed"
+    "typed",
+    "dstructs"
   ],
   "bugs": {
-    "url": "https://github.com/compute-io/matrix/issues"
+    "url": "https://github.com/dstructs/matrix/issues"
   },
   "dependencies": {
     "compute-cast-arrays": "^1.0.0",
