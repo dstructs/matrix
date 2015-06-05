@@ -806,17 +806,17 @@ Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
 [npm-image]: http://img.shields.io/npm/v/dstructs-matrix.svg
 [npm-url]: https://npmjs.org/package/dstructs-matrix
 
-[travis-image]: http://img.shields.io/travis/dstructs-io/matrix/master.svg
-[travis-url]: https://travis-ci.org/dstructs-io/matrix
+[travis-image]: http://img.shields.io/travis/dstructs/matrix/master.svg
+[travis-url]: https://travis-ci.org/dstructs/matrix
 
-[coveralls-image]: https://img.shields.io/coveralls/dstructs-io/matrix/master.svg
-[coveralls-url]: https://coveralls.io/r/dstructs-io/matrix?branch=master
+[coveralls-image]: https://img.shields.io/coveralls/dstructs/matrix/master.svg
+[coveralls-url]: https://coveralls.io/r/dstructs/matrix?branch=master
 
-[dependencies-image]: http://img.shields.io/david/dstructs-io/matrix.svg
-[dependencies-url]: https://david-dm.org/dstructs-io/matrix
+[dependencies-image]: http://img.shields.io/david/dstructs/matrix.svg
+[dependencies-url]: https://david-dm.org/dstructs/matrix
 
-[dev-dependencies-image]: http://img.shields.io/david/dev/dstructs-io/matrix.svg
-[dev-dependencies-url]: https://david-dm.org/dev/dstructs-io/matrix
+[dev-dependencies-image]: http://img.shields.io/david/dev/dstructs/matrix.svg
+[dev-dependencies-url]: https://david-dm.org/dev/dstructs/matrix
 
-[github-issues-image]: http://img.shields.io/github/issues/dstructs-io/matrix.svg
-[github-issues-url]: https://github.com/dstructs-io/matrix/issues
+[github-issues-image]: http://img.shields.io/github/issues/dstructs/matrix.svg
+[github-issues-url]: https://github.com/dstructs/matrix/issues
