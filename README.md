@@ -139,7 +139,7 @@ var shape = mat.shape;
 <a name="matrix-offset"></a>
 #### offset
 
-A property return the `offset` used to index into the underlying data store.
+A property returning the `offset` used to index into the underlying data store.
 
 ``` javascript
 var offset = mat.offset;
