@@ -98,7 +98,7 @@ res[ 3 ] = stop[ 0 ] + stop[ 1 ]*1e-9;
 // [4] Base matrix constructor:
 start = process.hrtime();
 for ( i = 0; i < len; i++ ) {
-	m = new m.constructor( iArr, [nRows,nCols], 'float32' );
+	m = new m.constructor( iArr, 'float32', [nRows,nCols], 0, [nCols,1]  );
 }
 stop = process.hrtime( start );
 
@@ -128,7 +128,7 @@ res[ 6 ] = stop[ 0 ] + stop[ 1 ]*1e-9;
 // [7] Raw matrix constructor:
 start = process.hrtime();
 for ( i = 0; i < len; i++ ) {
-	m = new m.constructor( iArr, [nRows,nCols], 'float32' );
+	m = new m.constructor( iArr, 'float32', [nRows,nCols], 0, [nCols,1] );
 }
 stop = process.hrtime( start );
 
