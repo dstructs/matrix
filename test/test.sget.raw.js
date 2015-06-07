@@ -1,4 +1,4 @@
-/* global require, describe, it */
+/* global require, describe, it, beforeEach */
 'use strict';
 
 // MODULES //
@@ -29,7 +29,10 @@ describe( 'matrix.raw#sget', function tests() {
 	for ( var i = 0; i < data.length; i++ ) {
 		data[ i ] = i;
 	}
-	mat = matrix( data, [10,10] );
+
+	beforeEach( function before() {
+		mat = matrix( data, [10,10] );
+	});
 
 	it( 'should export a function', function test() {
 		expect( sget ).to.be.a( 'function' );
@@ -54,6 +57,15 @@ describe( 'matrix.raw#sget', function tests() {
 
 		assert.deepEqual( mat1.shape, [2,2] );
 		assert.strictEqual( mat1.toString(), '13,12;23,22' );
+
+		// Flip the matrix instance up-down and then flip left-right:
+		mat.strides[ 0 ] *= -1;
+		mat.offset = mat.length + mat.strides[0];
+
+		mat1 = mat.sget( '1:3,3:1:-1' );
+
+		assert.deepEqual( mat1.shape, [2,2] );
+		assert.strictEqual( mat1.toString(), '83,82;73,72' );
 	});
 
 	it( 'should return an empty matrix if a subsequence does not have any corresponding matrix elements', function test() {

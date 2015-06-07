@@ -136,6 +136,19 @@ var shape = mat.shape;
 // returns [...]
 ```
 
+<a name="matrix-offset"></a>
+#### offset
+
+A property return the `offset` used to index into the underlying data store.
+
+``` javascript
+var offset = mat.offset;
+// returns 0
+```
+
+By default, the `offset` is `0`. While not __read-only__, most consumers should treat the `offset` as a __ready-only__ property.
+
+
 <a name="matrix-strides" class="read-only-property"></a>
 #### strides
 
@@ -145,6 +158,9 @@ A __read-only__ property returning the `strides` used to index into the underlyi
 var strides = mat.strides;
 // returns [...]
 ```
+
+While not __frozen__, most consumers should treat the `strides` elements as __read-only__ elements.
+
 
 <a name="matrix-length" class="read-only-property"></a>
 #### length
@@ -639,9 +655,9 @@ for ( i = 0; i < rows.length; i++ ) {
 A `Matrix` has a constructor having the following interface...
 
 
-#### mat.constructor( data, shape, dtype )
+#### mat.constructor( data, dtype, shape, offset, strides )
 
-Creates a new `Matrix` having a specified `shape`, `dtype`, and underlying typed `data` store.
+Creates a new `Matrix` having a specified `shape`, `offset`, `strides`, `dtype`, and underlying typed `data` store.
 
 ``` javascript
 var data = new Float32Array( 10 );
@@ -655,7 +671,7 @@ var mat1 = matrix( data, [5,2] );
 	  0 0 ]
 */
 
-var mat2 = new mat1.constructor( data, [2,5], 'float32' );
+var mat2 = new mat1.constructor( data, mat1.dtype, [2,5], 0, [5,1] );
 /*
 	[ 0 0 0 0 0
 	  0 0 0 0 0 ]

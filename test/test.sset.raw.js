@@ -82,7 +82,19 @@ describe( 'matrix.raw#sset', function tests() {
 
 		assert.strictEqual( submat.toString(), '35,36,37,38;45,64,74,48;55,65,75,58;65,66,67,68' );
 
+		// Flip the matrix up-down:
+		mat.strides[ 0 ] *= -1;
+		mat.offset = mat.length + mat.strides[ 0 ];
+
+		mat.sset( '4:6,6:8', set );
+		submat = mat.sget( '3:7,5:9' );
+
+		assert.strictEqual( submat.toString(), '65,66,67,68;55,64,74,58;45,65,75,48;35,36,37,38' );
+
 		function set( d, i, j, idx ) {
+			assert.isTrue( i >= 0 );
+			assert.isTrue( j >= 0 );
+			assert.isTrue( idx >= 0 );
 			return '' + j + i;
 		}
 	});
@@ -95,7 +107,7 @@ describe( 'matrix.raw#sset', function tests() {
 
 		assert.strictEqual( submat.toString(), '35,36,37,38;45,64,74,48;55,65,75,58;65,66,67,68' );
 
-		function set( d, i, j, idx ) {
+		function set( d, i, j ) {
 			/* jshint validthis:true */
 			assert.isNull( this );
 			return '' + j + i;
@@ -109,17 +121,44 @@ describe( 'matrix.raw#sset', function tests() {
 		submat = mat.sget( '3:7,5:9' );
 
 		assert.strictEqual( submat.toString(), '35,36,37,38;45,5,5,48;55,5,5,58;65,66,67,68' );
+
+		// Flip the matrix up-down:
+		mat.strides[ 0 ] *= -1;
+		mat.offset = mat.length + mat.strides[ 0 ];
+
+		mat.sset( '4:6,6:8', 5 );
+		submat = mat.sget( '3:7,5:9' );
+
+		assert.strictEqual( submat.toString(), '65,66,67,68;55,5,5,58;45,5,5,48;35,36,37,38' );
 	});
 
 	it( 'should set Matrix elements to elements in a different Matrix', function test() {
-		var submat, zeros;
+		var submat, m;
 
-		zeros = matrix( [2,2], 'int8' );
+		m = matrix( new Int8Array( [1,2,3,4] ), [2,2], 'int8' );
 
-		mat.sset( '4:6,6:8', zeros );
+		mat.sset( '4:6,6:8', m );
 		submat = mat.sget( '3:7,5:9' );
 
-		assert.strictEqual( submat.toString(), '35,36,37,38;45,0,0,48;55,0,0,58;65,66,67,68' );
+		assert.strictEqual( submat.toString(), '35,36,37,38;45,1,2,48;55,3,4,58;65,66,67,68' );
+
+		// Flip the value matrix left-right:
+		m.strides[ 1 ] *= -1;
+		m.offset = m.strides[ 0 ] - 1;
+
+		mat.sset( '4:6,6:8', m );
+		submat = mat.sget( '3:7,5:9' );
+
+		assert.strictEqual( submat.toString(), '35,36,37,38;45,2,1,48;55,4,3,58;65,66,67,68' );
+
+		// Flip the matrix top-down:
+		mat.strides[ 0 ] *= -1;
+		mat.offset = mat.length + mat.strides[ 0 ];
+
+		mat.sset( '4:6,6:8', m );
+		submat = mat.sget( '3:7,5:9' );
+
+		assert.strictEqual( submat.toString(), '65,66,67,68;55,2,1,58;45,4,3,48;35,36,37,38' );
 	});
 
 });

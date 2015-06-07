@@ -1,4 +1,4 @@
-/* global require, describe, it */
+/* global require, describe, it, beforeEach */
 'use strict';
 
 // MODULES //
@@ -29,7 +29,10 @@ describe( 'matrix.raw#set', function tests() {
 	for ( var i = 0; i < data.length; i++ ) {
 		data[ i ] = i;
 	}
-	mat = matrix( data, [10,10] );
+
+	beforeEach( function before() {
+		mat = matrix( data, [10,10], 'int32' );
+	});
 
 	it( 'should export a function', function test() {
 		expect( set ).to.be.a( 'function' );
@@ -46,6 +49,45 @@ describe( 'matrix.raw#set', function tests() {
 
 		assert.notEqual( actual, prev );
 		assert.strictEqual( actual, expected );
+
+		// Flip the matrix left-to-right:
+		mat.strides[ 1 ] *= -1;
+		mat.offset = mat.strides[ 0 ] - 1;
+
+		prev = mat.get( 5, 6 );
+		mat.set( 5, 6, 1001 );
+
+		actual = mat.get( 5, 6 );
+		expected = 1001;
+
+		assert.notEqual( actual, prev );
+		assert.strictEqual( actual, expected, 'fliplr' );
+
+		// Flip the matrix top-to-bottom:
+		mat.strides[ 0 ] *= -1;
+		mat.offset = mat.length - 1;
+
+		prev = mat.get( 5, 6 );
+		mat.set( 5, 6, 1002 );
+
+		actual = mat.get( 5, 6 );
+		expected = 1002;
+
+		assert.notEqual( actual, prev );
+		assert.strictEqual( actual, expected, 'fliplrud' );
+
+		// Flip the matrix left-to-right:
+		mat.strides[ 1 ] *= -1;
+		mat.offset = mat.length + mat.strides[ 0 ];
+
+		prev = mat.get( 5, 6 );
+		mat.set( 5, 6, 1003 );
+
+		actual = mat.get( 5, 6 );
+		expected = 1003;
+
+		assert.notEqual( actual, prev );
+		assert.strictEqual( actual, expected, 'flipud' );
 	});
 
 	it( 'should return the Matrix instance', function test() {
@@ -53,6 +95,10 @@ describe( 'matrix.raw#set', function tests() {
 	});
 
 	it( 'should silently fail if provided an out-of-bounds index', function test() {
+		mat.set( 500, 100, 1000 );
+		assert.isUndefined( mat.get( 500, 100 ) );
+
+		mat.strides[ 0 ] *= -1;
 		mat.set( 500, 100, 1000 );
 		assert.isUndefined( mat.get( 500, 100 ) );
 	});
