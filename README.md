@@ -146,7 +146,7 @@ var offset = mat.offset;
 // returns 0
 ```
 
-By default, the `offset` is `0`. While not __read-only__, most consumers should treat the `offset` as a __ready-only__ property.
+By default, the `offset` is `0`. While not __read-only__, most consumers should treat the `offset` as a __read-only__ property.
 
 
 <a name="matrix-strides" class="read-only-property"></a>
