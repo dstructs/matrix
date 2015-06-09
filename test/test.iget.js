@@ -1,4 +1,4 @@
-/* global require, describe, it */
+/* global require, describe, it, beforeEach */
 'use strict';
 
 // MODULES //
@@ -29,7 +29,10 @@ describe( 'matrix#iget', function tests() {
 	for ( var i = 0; i < data.length; i++ ) {
 		data[ i ] = i * 2;
 	}
-	mat = matrix( data, [10,10] );
+
+	beforeEach( function before() {
+		mat = matrix( data, [10,10], 'int32' );
+	});
 
 	it( 'should export a function', function test() {
 		expect( iget ).to.be.a( 'function' );
@@ -65,6 +68,33 @@ describe( 'matrix#iget', function tests() {
 		expected = 112;
 
 		assert.strictEqual( actual, expected );
+
+		// Flip the matrix left-to-right:
+		mat.strides[ 1 ] *= -1;
+		mat.offset = mat.strides[ 0 ] - 1;
+
+		actual = mat.iget( 56 );
+		expected = 106;
+
+		assert.strictEqual( actual, expected, 'fliplr' );
+
+		// Flip the matrix top-to-bottom:
+		mat.strides[ 0 ] *= -1;
+		mat.offset = mat.length - 1;
+
+		actual = mat.iget( 56 );
+		expected = 86;
+
+		assert.strictEqual( actual, expected, 'fliplrud' );
+
+		// Flip the matrix left-to-right:
+		mat.strides[ 1 ] *= -1;
+		mat.offset = mat.length + mat.strides[ 0 ];
+
+		actual = mat.iget( 56 );
+		expected = 92;
+
+		assert.strictEqual( actual, expected, 'flipud' );
 	});
 
 	it( 'should accept negative indices', function test() {
@@ -74,6 +104,33 @@ describe( 'matrix#iget', function tests() {
 		expected = 196;
 
 		assert.strictEqual( actual, expected );
+
+		// Flip the matrix left-to-right:
+		mat.strides[ 1 ] *= -1;
+		mat.offset = mat.strides[ 0 ] - 1;
+
+		actual = mat.iget( -2 );
+		expected = 182;
+
+		assert.strictEqual( actual, expected, 'fliplr' );
+
+		// Flip the matrix top-to-bottom:
+		mat.strides[ 0 ] *= -1;
+		mat.offset = mat.length - 1;
+
+		actual = mat.iget( -2 );
+		expected = 2;
+
+		assert.strictEqual( actual, expected, 'fliplrud' );
+
+		// Flip the matrix left-to-right:
+		mat.strides[ 1 ] *= -1;
+		mat.offset = mat.length + mat.strides[ 0 ];
+
+		actual = mat.iget( -2 );
+		expected = 16;
+
+		assert.strictEqual( actual, expected, 'flipud' );
 	});
 
 	it( 'should return undefined if provided an out-of-bounds index', function test() {

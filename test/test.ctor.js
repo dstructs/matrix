@@ -20,14 +20,14 @@ var expect = chai.expect,
 
 describe( 'Matrix', function tests() {
 
-	var mat = ctor( new Float32Array( 10 ), [5,2], 'float32' );
+	var mat = ctor( new Float32Array( 10 ), 'float32', [5,2], 0, [2,1] );
 
 	it( 'should export a function', function test() {
 		expect( ctor ).to.be.a( 'function' );
 	});
 
-	it( 'should have an arity of 3', function test() {
-		assert.strictEqual( ctor.length, 3 );
+	it( 'should have an arity of 5', function test() {
+		assert.strictEqual( ctor.length, 5 );
 	});
 
 	it( 'should create a new Matrix instance', function test() {
@@ -37,8 +37,8 @@ describe( 'Matrix', function tests() {
 	it( 'should not require a `new` operator', function test() {
 		var A, B;
 
-		A = ctor( mat.data, mat.shape, mat.dtype );
-		B = new ctor( mat.data, mat.shape, mat.dtype );
+		A = ctor( mat.data, mat.shape, mat.dtype, mat.offset, mat.strides );
+		B = new ctor( mat.data, mat.shape, mat.dtype, mat.offset, mat.strides );
 
 		assert.isTrue( A instanceof ctor );
 
@@ -92,6 +92,12 @@ describe( 'Matrix', function tests() {
 		function foo() {
 			mat.strides = [ -4, 1 ];
 		}
+	});
+
+	it( 'should create a Matrix having an offset property', function test() {
+		assert.isTrue( mat.hasOwnProperty( 'offset' ) );
+		assert.isNumber( mat.offset );
+		assert.deepEqual( mat.offset, 0 );
 	});
 
 	it( 'should create a Matrix having a protected ndims property', function test() {

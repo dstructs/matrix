@@ -30,7 +30,7 @@ describe( 'matrix.raw#mset', function tests() {
 		for ( var i = 0; i < data.length; i++ ) {
 			data[ i ] = i;
 		}
-		mat = matrix( data, [10,10] );
+		mat = matrix( data, [10,10], 'int32' );
 	});
 
 	it( 'should export a function', function test() {
@@ -56,36 +56,177 @@ describe( 'matrix.raw#mset', function tests() {
 	});
 
 	it( 'should set Matrix values located at specified linear indices to a numeric value', function test() {
-		var submat;
+		var idx, m, prev, actual, expected;
 
-		mat.mset( [14,28,47], 999 );
-		submat = mat.mget( [14,28,47] );
+		idx = [ 14, 28, 47 ];
+		expected = '999,999,999';
 
-		assert.strictEqual( submat.toString(), '999,999,999' );
+		prev = mat.mget( idx );
+		mat.mset( idx, 999 );
+
+		m = mat.mget( idx );
+		actual = m.toString();
+
+		assert.notEqual( actual, prev.toString() );
+		assert.strictEqual( actual, expected );
+
+		// Flip the matrix left-to-right:
+		mat.strides[ 1 ] *= -1;
+		mat.offset = mat.strides[ 0 ] - 1;
+
+		prev = mat.mget( idx );
+		mat.mset( idx, 999 );
+
+		m = mat.mget( idx );
+		actual = m.toString();
+
+		assert.notEqual( actual, prev.toString() );
+		assert.strictEqual( actual, expected, 'fliplr' );
+
+		// Flip the matrix top-to-bottom:
+		mat.strides[ 0 ] *= -1;
+		mat.offset = mat.length - 1;
+
+		prev = mat.mget( idx );
+		mat.mset( idx, 999 );
+
+		m = mat.mget( idx );
+		actual = m.toString();
+
+		assert.notEqual( actual, prev.toString() );
+		assert.strictEqual( actual, expected, 'fliplrud' );
+
+		// Flip the matrix left-to-right:
+		mat.strides[ 1 ] *= -1;
+		mat.offset = mat.length + mat.strides[ 0 ];
+
+		prev = mat.mget( idx );
+		mat.mset( idx, 999 );
+
+		m = mat.mget( idx );
+		actual = m.toString();
+
+		assert.notEqual( actual, prev.toString() );
+		assert.strictEqual( actual, expected, 'flipud' );
 	});
 
 	it( 'should set Matrix values located at specified linear indices using a callback', function test() {
-		var submat;
+		var idx, m, prev, actual, expected;
 
-		mat.mset( [14,28,47], set );
-		submat = mat.mget( [14,28,47] );
+		idx = [ 14, 28, 47 ];
+		expected = '999,999,999';
 
-		assert.strictEqual( submat.toString(), '999,999,999' );
+		prev = mat.mget( idx );
+		mat.mset( idx, set );
 
-		function set( d, i, j, idx ) {
+		m = mat.mget( idx );
+		actual = m.toString();
+
+		assert.notEqual( actual, prev.toString() );
+		assert.strictEqual( actual, expected );
+
+		// Flip the matrix left-to-right:
+		mat.strides[ 1 ] *= -1;
+		mat.offset = mat.strides[ 0 ] - 1;
+
+		prev = mat.mget( idx );
+		mat.mset( idx, set );
+
+		m = mat.mget( idx );
+		actual = m.toString();
+
+		assert.notEqual( actual, prev.toString() );
+		assert.strictEqual( actual, expected, 'fliplr' );
+
+		// Flip the matrix top-to-bottom:
+		mat.strides[ 0 ] *= -1;
+		mat.offset = mat.length - 1;
+
+		prev = mat.mget( idx );
+		mat.mset( idx, set );
+
+		m = mat.mget( idx );
+		actual = m.toString();
+
+		assert.notEqual( actual, prev.toString() );
+		assert.strictEqual( actual, expected, 'fliplrud' );
+
+		// Flip the matrix left-to-right:
+		mat.strides[ 1 ] *= -1;
+		mat.offset = mat.length + mat.strides[ 0 ];
+
+		prev = mat.mget( idx );
+		mat.mset( idx, set );
+
+		m = mat.mget( idx );
+		actual = m.toString();
+
+		assert.notEqual( actual, prev.toString() );
+		assert.strictEqual( actual, expected, 'flipud' );
+
+		function set( d, i, j, k ) {
+			assert.isTrue( i >= 0 );
+			assert.isTrue( j >= 0 );
+			assert.isTrue( k >= 0 );
 			return 999;
 		}
 	});
 
 	it( 'should set Matrix values located at specified linear indices using a callback and a provided context', function test() {
-		var submat;
+		var idx, m, prev, actual, expected;
 
-		mat.mset( [14,28,47], set, null );
-		submat = mat.mget( [14,28,47] );
+		idx = [ 14, 28, 47 ];
+		expected = '999,999,999';
 
-		assert.strictEqual( submat.toString(), '999,999,999' );
+		prev = mat.mget( idx );
+		mat.mset( idx, set, null );
 
-		function set( d, i, j, idx ) {
+		m = mat.mget( idx );
+		actual = m.toString();
+
+		assert.notEqual( actual, prev.toString() );
+		assert.strictEqual( actual, expected );
+
+		// Flip the matrix left-to-right:
+		mat.strides[ 1 ] *= -1;
+		mat.offset = mat.strides[ 0 ] - 1;
+
+		prev = mat.mget( idx );
+		mat.mset( idx, set, null );
+
+		m = mat.mget( idx );
+		actual = m.toString();
+
+		assert.notEqual( actual, prev.toString() );
+		assert.strictEqual( actual, expected, 'fliplr' );
+
+		// Flip the matrix top-to-bottom:
+		mat.strides[ 0 ] *= -1;
+		mat.offset = mat.length - 1;
+
+		prev = mat.mget( idx );
+		mat.mset( idx, set, null );
+
+		m = mat.mget( idx );
+		actual = m.toString();
+
+		assert.notEqual( actual, prev.toString() );
+		assert.strictEqual( actual, expected, 'fliplrud' );
+
+		// Flip the matrix left-to-right:
+		mat.strides[ 1 ] *= -1;
+		mat.offset = mat.length + mat.strides[ 0 ];
+
+		prev = mat.mget( idx );
+		mat.mset( idx, set, null );
+
+		m = mat.mget( idx );
+		actual = m.toString();
+
+		assert.notEqual( actual, prev.toString() );
+		assert.strictEqual( actual, expected, 'flipud' );
+
+		function set() {
 			/* jshint validthis:true */
 			assert.isNull( this );
 			return 999;
@@ -93,20 +234,53 @@ describe( 'matrix.raw#mset', function tests() {
 	});
 
 	it( 'should set Matrix values located at specified linear indices to values from a different Matrix', function test() {
-		var submat, zeros;
+		var idx, m, vmat;
 
-		zeros = matrix( [1,3], 'int32' );
+		idx = [ 5, 53, 23 ];
 
-		mat.mset( [5,53,23], zeros );
-		submat = mat.mget( [5,53,23] );
+		vmat = matrix( new Int32Array( [1,2,3] ), [1,3], 'int32' );
 
-		assert.strictEqual( submat.toString(), '0,0,0' );
+		mat.mset( idx, vmat );
+		m = mat.mget( idx );
+
+		assert.strictEqual( m.toString(), '1,2,3' );
+
+		// Flip the value matrix top-to-bottom...
+		vmat.offset = vmat.length - vmat.strides[ 0 ];
+		vmat.strides[ 0 ] *= -1;
+
+		mat.mset( idx, vmat );
+		m = mat.mget( idx );
+
+		assert.strictEqual( m.toString(), '1,2,3', 'vmat flipud' );
+
+		// Flip the matrix top-to-bottom...
+		mat.offset = mat.length - mat.strides[ 0 ];
+		mat.strides[ 0 ] *= -1;
+
+		mat.mset( idx, vmat );
+		m = mat.mget( idx );
+
+		assert.strictEqual( m.toString(), '1,2,3', 'flipud' );
 	});
 
 	it( 'should set all rows and select columns', function test() {
 		var prev, actual, expected;
 
 		// Numeric value:
+		prev = mat.mget( null, [1] ).toString();
+		mat.mset( null, [1], 5 );
+
+		actual = mat.mget( null, [1] ).toString();
+		expected = '5;5;5;5;5;5;5;5;5;5';
+
+		assert.notEqual( prev, actual );
+		assert.strictEqual( actual, expected );
+
+		// Flip left-to-right...
+		mat.strides[ 1 ] *= -1;
+		mat.offset = mat.strides[ 0 ] - 1;
+
 		prev = mat.mget( null, [1] ).toString();
 		mat.mset( null, [1], 5 );
 
@@ -136,6 +310,19 @@ describe( 'matrix.raw#mset', function tests() {
 		assert.notEqual( prev, actual );
 		assert.strictEqual( actual, expected );
 
+		// Flip top-to-bottom:
+		mat.strides[ 0 ] *= -1;
+		mat.offset = mat.length - 1;
+
+		prev = mat.mget( null, [8] ).toString();
+		mat.mset( null, [8], set );
+
+		actual = mat.mget( null, [8] ).toString();
+		expected = '20;20;20;20;20;20;20;20;20;20';
+
+		assert.notEqual( prev, actual );
+		assert.strictEqual( actual, expected );
+
 		// Matrix:
 		prev = mat.mget( null, [3] ).toString();
 		mat.mset( null, [3], matrix( [10,1], 'int32' ) );
@@ -146,7 +333,10 @@ describe( 'matrix.raw#mset', function tests() {
 		assert.notEqual( prev, actual );
 		assert.strictEqual( actual, expected );
 
-		function set() {
+		function set( d, i, j, k ) {
+			assert.isTrue( i >= 0 );
+			assert.isTrue( j >= 0 );
+			assert.isTrue( k >= 0 );
 			return 20;
 		}
 	});
@@ -160,6 +350,19 @@ describe( 'matrix.raw#mset', function tests() {
 
 		actual = mat.mget( [1], null ).toString();
 		expected = '5,5,5,5,5,5,5,5,5,5';
+
+		assert.notEqual( prev, actual );
+		assert.strictEqual( actual, expected );
+
+		// Flip left-to-right...
+		mat.strides[ 1 ] *= -1;
+		mat.offset = mat.strides[ 0 ] - 1;
+
+		prev = mat.mget( null, [1] ).toString();
+		mat.mset( null, [1], 5 );
+
+		actual = mat.mget( null, [1] ).toString();
+		expected = '5;5;5;5;5;5;5;5;5;5';
 
 		assert.notEqual( prev, actual );
 		assert.strictEqual( actual, expected );
@@ -180,6 +383,19 @@ describe( 'matrix.raw#mset', function tests() {
 
 		actual = mat.mget( [2], null ).toString();
 		expected = '20,20,20,20,20,20,20,20,20,20';
+
+		assert.notEqual( prev, actual );
+		assert.strictEqual( actual, expected );
+
+		// Flip top-to-bottom:
+		mat.strides[ 0 ] *= -1;
+		mat.offset = mat.length - 1;
+
+		prev = mat.mget( null, [8] ).toString();
+		mat.mset( null, [8], set );
+
+		actual = mat.mget( null, [8] ).toString();
+		expected = '20;20;20;20;20;20;20;20;20;20';
 
 		assert.notEqual( prev, actual );
 		assert.strictEqual( actual, expected );
