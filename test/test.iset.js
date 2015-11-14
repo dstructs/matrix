@@ -64,7 +64,6 @@ describe( 'matrix#iset', function tests() {
 	it( 'should throw an error if provided a non-numeric value to set', function test() {
 		var values = [
 			'5',
-			NaN,
 			null,
 			true,
 			undefined,
