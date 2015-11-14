@@ -10,6 +10,10 @@
     {
       "name": "Athan Reines",
       "email": "kgryte@gmail.com"
+    },
+    {
+      "name": "Philipp Burckhardt",
+      "email": "pburckhardt@outlook.com"
     }
   ],
   "scripts": {
@@ -52,6 +56,7 @@
     "validate.io-contains": "^1.0.0",
     "validate.io-function": "^1.0.2",
     "validate.io-integer-primitive": "^1.0.0",
+    "validate.io-nan": "^1.0.3",
     "validate.io-nonnegative-integer": "^1.0.0",
     "validate.io-nonnegative-integer-array": "^1.0.1",
     "validate.io-number-primitive": "^1.0.0",
