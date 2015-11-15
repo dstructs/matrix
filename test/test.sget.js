@@ -3,13 +3,8 @@
 
 // MODULES //
 
-var // Expectation library:
-	chai = require( 'chai' ),
-
-	// Matrix class:
+var chai = require( 'chai' ),
 	matrix = require( './../lib' ),
-
-	// Module to be tested:
 	sget = require( './../lib/sget.js' );
 
 

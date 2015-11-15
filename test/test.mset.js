@@ -3,13 +3,8 @@
 
 // MODULES //
 
-var // Expectation library:
-	chai = require( 'chai' ),
-
-	// Matrix class:
+var chai = require( 'chai' ),
 	matrix = require( './../lib' ),
-
-	// Module to be tested:
 	mset = require( './../lib/mset.js' );
 
 
@@ -291,7 +286,6 @@ describe( 'matrix#mset', function tests() {
 		assert.strictEqual( actual, expected );
 
 		// For integer-typed matrices, elements are set to 0:
-
 		mat = matrix( [1,2,3,4,5,6,7,8,9], [3,3], 'int32' );
 
 		idx = [ 2, 5, 8 ];

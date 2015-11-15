@@ -3,16 +3,9 @@
 
 // MODULES //
 
-var // Expectation library:
-	chai = require( 'chai' ),
-
-	// Matrix class:
+var chai = require( 'chai' ),
 	matrix = require( './../lib' ),
-
-	// Validates whether a value is equal to NaN
 	isnan = require( 'validate.io-nan' ),
-
-	// Module to be tested:
 	set = require( './../lib/set.js' );
 
 
