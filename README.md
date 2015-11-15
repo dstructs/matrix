@@ -1,6 +1,6 @@
 Matrix
 ===
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][codecov-image]][codecov-url] [![Dependencies][dependencies-image]][dependencies-url]
 
 > Matrices.
 
@@ -249,7 +249,7 @@ __Note__: out-of-bounds row and column indices will silently fail.
 <a name="matrix-iset"></a>
 #### Matrix.prototype.iset( index, value )
 
-Sets a `Matrix` element located at a specified [`index`](#linear-indexing). If `index < 0`, the index refers to a position relative to the `Matrix` length, where `index = -1` corresponds to the last element. 
+Sets a `Matrix` element located at a specified [`index`](#linear-indexing). If `index < 0`, the index refers to a position relative to the `Matrix` length, where `index = -1` corresponds to the last element.
 
 ``` javascript
 mat.iset( 7, 25 );
@@ -409,7 +409,7 @@ A callback is provided four arguments:
 *	__j__: column index
 *	__idx__: linear index
 
-and is __expected__ to return a `number` primitive or a value which can be cast to a `number` primitive. 
+and is __expected__ to return a `number` primitive or a value which can be cast to a `number` primitive.
 
 ``` javascript
 function set( d, i, j, idx ) {
@@ -481,7 +481,7 @@ __Note__: out-of-bounds row and column indices will return a value of `undefined
 <a name="matrix-iget"></a>
 #### Matrix.prototype.iget( index )
 
-Returns a `Matrix` element located at a specified [`index`](#linear-indexing). If `index < 0`, the index refers to a position relative to the `Matrix` length, where `index = -1` corresponds to the last element. 
+Returns a `Matrix` element located at a specified [`index`](#linear-indexing). If `index < 0`, the index refers to a position relative to the `Matrix` length, where `index = -1` corresponds to the last element.
 
 ``` javascript
 var value = mat.iget( 7 );
@@ -569,7 +569,7 @@ submatrix = mat.sget( ':,:' ); // Copy a matrix
 /*
 	[ 0 1
 	  2 3
-	  4 5 
+	  4 5
 	  6 7
 	  8 9 ]
 */
@@ -643,7 +643,7 @@ for ( i = 0; i < rows.length; i++ ) {
 	rows[ i ] = new Array( cols.length );
 	for ( j = 0; j < cols.length; j++ ) {
 		rows[ i ][ j ] = parseFloat( cols[ j ] );
-	}	
+	}
 }
 ```
 
@@ -724,7 +724,7 @@ __Notes__:
 *	Specifying a `dtype` does __not__ cast the data to a different storage type. Instead, providing the argument circumvents the need to determine the input `data` type, resulting in increased performance.
 *	Input `data` __must__ be a typed array. Unlike the higher-level `Matrix` interface, plain `arrays` are __not__ cast to `float64`. Providing a plain `array` can lead to subtle bugs and affect performance.
 *	`Matrix` properties and methods are the same as for the higher-level API, with the exception that `Matrix` properties are __no__ longer read-only and methods do __not__ perform input argument validation.
-* 	Setting properties is __not__ recommended as the `Matrix` can become corrupted; e.g., incompatible dimensions, out-of-bounds indexing, etc. In contrast to the strict API above, setting `Matrix` properties will __not__ result in an `error` being thrown. Accordingly, property modification may introduce silent bugs. 
+* 	Setting properties is __not__ recommended as the `Matrix` can become corrupted; e.g., incompatible dimensions, out-of-bounds indexing, etc. In contrast to the strict API above, setting `Matrix` properties will __not__ result in an `error` being thrown. Accordingly, property modification may introduce silent bugs.
 *	The lower-level `Matrix` constructor has the same interface as the higher-level `Matrix` constructor.
 
 
@@ -825,8 +825,8 @@ Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
 [travis-image]: http://img.shields.io/travis/dstructs/matrix/master.svg
 [travis-url]: https://travis-ci.org/dstructs/matrix
 
-[coveralls-image]: https://img.shields.io/coveralls/dstructs/matrix/master.svg
-[coveralls-url]: https://coveralls.io/r/dstructs/matrix?branch=master
+[codecov-image]: https://img.shields.io/c/github/codecov/dstructs/matrix/master.svg
+[codecov-url]: https://codecov.io/github/dstructs/matrix?branch=master
 
 [dependencies-image]: http://img.shields.io/david/dstructs/matrix.svg
 [dependencies-url]: https://david-dm.org/dstructs/matrix
