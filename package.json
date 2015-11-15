@@ -69,7 +69,8 @@
     "jshint": "2.x.x",
     "jshint-stylish": "2.x.x",
     "mocha": "2.x.x",
-    "type-name": "^1.0.1"
+    "type-name": "^1.0.1",
+    "validate.io-typed-array": "^1.0.0"
   },
   "license": "MIT"
 }

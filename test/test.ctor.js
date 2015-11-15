@@ -6,6 +6,9 @@
 var // Expectation library:
 	chai = require( 'chai' ),
 
+	// Validates whether a value is a typed array:
+	isTypedArray = require( 'validate.io-typed-array' ),
+
 	// Module to be tested:
 	ctor = require( './../lib/ctor.js' );
 
@@ -134,7 +137,7 @@ describe( 'Matrix', function tests() {
 
 	it( 'should create a Matrix having a protected data property', function test() {
 		assert.isTrue( mat.hasOwnProperty( 'data' ) );
-		assert.isObject( mat.data );
+		assert.isTrue( isTypedArray( mat.data ) );
 
 		expect( foo ).to.throw( Error );
 		function foo() {
