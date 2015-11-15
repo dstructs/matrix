@@ -3,13 +3,9 @@
 
 // MODULES //
 
-var // Expectation library:
-	chai = require( 'chai' ),
-
-	// Matrix class:
+var chai = require( 'chai' ),
 	matrix = require( './../lib' ),
-
-	// Module to be tested:
+	isnan = require( 'validate.io-nan' ),
 	set = require( './../lib/set.js' );
 
 
@@ -89,7 +85,6 @@ describe( 'matrix#set', function tests() {
 	it( 'should throw an error if provided a non-numeric value to set', function test() {
 		var values = [
 			'5',
-			NaN,
 			null,
 			true,
 			undefined,
@@ -158,6 +153,32 @@ describe( 'matrix#set', function tests() {
 
 		assert.notEqual( actual, prev );
 		assert.strictEqual( actual, expected, 'flipud' );
+	});
+
+	it( 'should set a Matrix element to NaN', function test() {
+		var mat1, mat2,
+			prev, actual, expected;
+
+		mat1 = matrix( [1,2,3,4], [2,2], 'float32' );
+		prev = mat1.get( 1, 1 );
+		mat1.set( 1, 1, NaN );
+
+		actual = mat1.get( 1, 1 );
+
+		assert.notEqual( actual, prev );
+		assert.isTrue( isnan( actual ) );
+
+		// For integer matrices, NaN will be casted to 0:
+		mat2 = matrix( [1,2,3,4], [2,2], 'int32' );
+		prev = mat2.get( 1, 1 );
+		mat2.set( 1, 1, NaN );
+
+		actual = mat2.get( 1, 1 );
+		expected = 0;
+
+		assert.notEqual( actual, prev );
+		assert.strictEqual( actual, expected );
+
 	});
 
 	it( 'should return the Matrix instance', function test() {

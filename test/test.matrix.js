@@ -3,13 +3,8 @@
 
 // MODULES //
 
-var // Expectation library:
-	chai = require( 'chai' ),
-
-	// Determine a value's type name:
+var chai = require( 'chai' ),
 	typeName = require( 'type-name' ),
-
-	// Module to be tested:
 	matrix = require( './../lib/matrix.js' );
 
 

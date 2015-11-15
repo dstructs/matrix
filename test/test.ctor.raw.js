@@ -3,10 +3,8 @@
 
 // MODULES //
 
-var // Expectation library:
-	chai = require( 'chai' ),
-
-	// Module to be tested:
+var chai = require( 'chai' ),
+	isTypedArray = require( 'validate.io-typed-array' ),
 	ctor = require( './../lib/ctor.raw.js' );
 
 
@@ -104,7 +102,7 @@ describe( 'Matrix.raw', function tests() {
 
 	it( 'should create a Matrix having a data property', function test() {
 		assert.isTrue( mat.hasOwnProperty( 'data' ) );
-		assert.isObject( mat.data );
+		assert.isTrue( isTypedArray( mat.data ) );
 	});
 
 });
