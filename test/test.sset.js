@@ -179,6 +179,18 @@ describe( 'matrix#sset', function tests() {
 		assert.strictEqual( submat.toString(), '65,66,67,68;55,5,5,58;45,5,5,48;35,36,37,38' );
 	});
 
+	it( 'should set Matrix elements to NaN', function test() {
+		var mat;
+
+		mat = matrix( [1,2,3,4,5,6,7,8,9], [3,3], 'float64' );
+
+		assert.strictEqual( mat.toString(), '1,2,3;4,5,6;7,8,9' );
+
+		mat.sset( '0:2,0:2', NaN );
+
+		assert.strictEqual( mat.toString(), 'NaN,NaN,3;NaN,NaN,6;7,8,9' );
+	});
+
 	it( 'should set Matrix elements to elements in a different Matrix', function test() {
 		var submat, m;
 

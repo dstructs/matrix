@@ -273,6 +273,41 @@ describe( 'matrix#mset', function tests() {
 		assert.strictEqual( actual, expected, 'flipud' );
 	});
 
+	it( 'should set Matrix values located at specified linear indices to NaN', function test() {
+		var idx, mat, m, prev, actual, expected;
+
+		mat = matrix( [1,2,3,4,5,6,7,8,9], [3,3], 'float64' );
+
+		idx = [ 2, 5, 8 ];
+		expected = 'NaN,NaN,NaN';
+
+		prev = mat.mget( idx );
+		mat.mset( idx, NaN );
+
+		m = mat.mget( idx );
+		actual = m.toString();
+
+		assert.notEqual( actual, prev.toString() );
+		assert.strictEqual( actual, expected );
+
+		// For integer-typed matrices, elements are set to 0:
+
+		mat = matrix( [1,2,3,4,5,6,7,8,9], [3,3], 'int32' );
+
+		idx = [ 2, 5, 8 ];
+		expected = '0,0,0';
+
+		prev = mat.mget( idx );
+		mat.mset( idx, NaN );
+
+		m = mat.mget( idx );
+		actual = m.toString();
+
+		assert.notEqual( actual, prev.toString() );
+		assert.strictEqual( actual, expected );
+
+	});
+
 	it( 'should set Matrix values located at specified linear indices using a callback', function test() {
 		var idx, m, prev, actual, expected;
 

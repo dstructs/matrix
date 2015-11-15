@@ -9,6 +9,9 @@ var // Expectation library:
 	// Matrix class:
 	matrix = require( './../lib' ),
 
+	// Validates whether a value is equal to NaN
+	isnan = require( 'validate.io-nan' ),
+
 	// Module to be tested:
 	iset = require( './../lib/iset.js' );
 
@@ -132,6 +135,32 @@ describe( 'matrix#iset', function tests() {
 
 		assert.notEqual( actual, prev );
 		assert.strictEqual( actual, expected, 'flipud' );
+	});
+
+	it( 'should set a Matrix element to NaN', function test() {
+		var mat1, mat2,
+			prev, actual, expected;
+
+		mat1 = matrix( [1,2,3,4], [2,2], 'float32' );
+		prev = mat1.iget( 2 );
+		mat1.iset( 2, NaN );
+
+		actual = mat1.iget( 2 );
+
+		assert.notEqual( actual, prev );
+		assert.isTrue( isnan( actual ) );
+
+		// For integer matrices, NaN will be cast to 0:
+		mat2 = matrix( [1,2,3,4], [2,2], 'int32' );
+		prev = mat2.iget( 2 );
+		mat2.iset( 2, NaN );
+
+		actual = mat2.iget( 2 );
+		expected = 0;
+
+		assert.notEqual( actual, prev );
+		assert.strictEqual( actual, expected );
+
 	});
 
 	it( 'should accept negative indices', function test() {
