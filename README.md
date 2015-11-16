@@ -825,7 +825,7 @@ Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
 [travis-image]: http://img.shields.io/travis/dstructs/matrix/master.svg
 [travis-url]: https://travis-ci.org/dstructs/matrix
 
-[codecov-image]: https://img.shields.io/c/github/codecov/dstructs/matrix/master.svg
+[codecov-image]: https://img.shields.io/codecov/c/github/dstructs/matrix/master.svg
 [codecov-url]: https://codecov.io/github/dstructs/matrix?branch=master
 
 [dependencies-image]: http://img.shields.io/david/dstructs/matrix.svg
