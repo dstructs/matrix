@@ -6,4 +6,25 @@ TODO
 	-	e.g., the case where `linspace` outputs a typed-array
 	-	currently, only plain arrays are accepted
 3. `toJSON`
-4. 
+	-	data
+	-	dtype
+	-	shape
+	-	offset
+	-	strides
+	-	raw
+
+	``` javascript
+	{
+		"type": "Matrix",
+		"dtype": "<dtype>",
+		"shape": [0,0],
+		"offset": 0,
+		"strides": [0,0],
+		"raw": true || false,
+		"data": "<data>"
+	}
+	```
+4. typed-array 
+	-	type
+	-	data
+5. 

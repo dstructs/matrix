@@ -5,7 +5,7 @@
 
 var chai = require( 'chai' ),
 	matrix = require( './../lib' ),
-	toString = require( './../lib/toString.js' );
+	toString = require( './../lib/tostring.js' );
 
 
 // VARIABLES //
