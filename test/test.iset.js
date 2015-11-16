@@ -4,8 +4,8 @@
 // MODULES //
 
 var chai = require( 'chai' ),
-	matrix = require( './../lib' ),
 	isnan = require( 'validate.io-nan' ),
+	matrix = require( './../lib' ),
 	iset = require( './../lib/iset.js' );
 
 

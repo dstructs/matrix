@@ -4,8 +4,8 @@
 // MODULES //
 
 var chai = require( 'chai' ),
-	matrix = require( './../lib' ),
 	isnan = require( 'validate.io-nan' ),
+	matrix = require( './../lib' ),
 	set = require( './../lib/set.js' );
 
 
@@ -178,7 +178,6 @@ describe( 'matrix#set', function tests() {
 
 		assert.notEqual( actual, prev );
 		assert.strictEqual( actual, expected );
-
 	});
 
 	it( 'should return the Matrix instance', function test() {

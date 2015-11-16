@@ -178,11 +178,9 @@ describe( 'matrix#sset', function tests() {
 		var mat;
 
 		mat = matrix( [1,2,3,4,5,6,7,8,9], [3,3], 'float64' );
-
 		assert.strictEqual( mat.toString(), '1,2,3;4,5,6;7,8,9' );
 
 		mat.sset( '0:2,0:2', NaN );
-
 		assert.strictEqual( mat.toString(), 'NaN,NaN,3;NaN,NaN,6;7,8,9' );
 	});
 

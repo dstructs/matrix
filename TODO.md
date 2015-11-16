@@ -5,4 +5,5 @@ TODO
 2. for methods accepting index `arrays` as input, generalize for `array-like` objects
 	-	e.g., the case where `linspace` outputs a typed-array
 	-	currently, only plain arrays are accepted
-3. 
+3. `toJSON`
+4. 
