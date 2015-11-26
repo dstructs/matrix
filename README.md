@@ -648,6 +648,63 @@ for ( i = 0; i < rows.length; i++ ) {
 ```
 
 
+<a name="matrix-tojson"></a>
+#### Matrix.prototype.toJSON()
+
+Returns a [`JSON`](http://www.json.org/) representation of a `Matrix`. `JSON#stringify` implicitly calls this method when stringifying a `Matrix` instance.
+
+``` javascript
+var data = new Int8Array( 10 );
+for ( var i = 0; i < data.length; i++ ) {
+	data[ i ] = i;
+}
+
+var mat = matrix( data, [5,2] );
+
+var json = mat.toJSON();
+/*
+	{
+		"type": "Matrix",
+		"dtype": "int8",
+		"shape": [5,2],
+		"offset": 0,
+		"strides": [2,1],
+		"raw": false,
+		"data": [0,1,2,3,4,5,6,7,8,9]
+	}
+*/
+```
+
+To a [revive]() a `Matrix` from a [`JSON`](http://www.json.org/) string,
+
+``` javascript
+var str = JSON.stringify( json );
+
+// Get matrix constructors...
+var ctor = matrix( [0,0] ).constructor;
+var rctor = matrix.raw( [0,0] ).constructor;
+
+function reviver( key, val ) {
+	var mat;
+	if ( val && val.type === 'Matrix' ) {
+		if ( val.raw ) {
+			return rctor( val.data, val.dtype, val.shape, val.offset, val.strides );
+		}
+		return ctor( val.data, val.dtype, val.shape, val.offset, val.strides );
+	}
+}
+
+var mat = JSON.parse( str, reviver );
+/*
+	[ 0 1
+	  2 3
+	  4 5
+	  6 7
+	  8 9 ]
+*/
+```
+
+
 ---
 <a name="matrix-constructor"></a>
 ## Constructor

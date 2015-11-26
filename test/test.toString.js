@@ -47,4 +47,29 @@ describe( 'matrix#toString', function tests() {
 		assert.strictEqual( actual, expected );
 	});
 
+	it( 'should convert a raw Matrix instance to a string', function test() {
+		var mat, data, actual, expected;
+
+		// Zero-filled matrix:
+		mat = matrix.raw( [4,4], 'int8' );
+
+		actual = mat.toString();
+		expected = '0,0,0,0;0,0,0,0;0,0,0,0;0,0,0,0';
+
+		assert.strictEqual( actual, expected );
+
+		// Full matrix:
+		data = new Float32Array( 6 );
+		for ( var i = 0; i < data.length; i++ ) {
+			data[ i ] = i * 2;
+		}
+
+		mat = matrix.raw( data, [3,2], 'float32' );
+
+		actual = mat.toString();
+		expected = '0,2;4,6;8,10';
+
+		assert.strictEqual( actual, expected );
+	});
+
 });
