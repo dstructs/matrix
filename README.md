@@ -695,7 +695,7 @@ for ( i = 0; i < rows.length; i++ ) {
 <a name="matrix-tojson"></a>
 #### Matrix.prototype.toJSON()
 
-Returns a [`JSON`](http://www.json.org/) representation of a `Matrix`. `JSON#stringify` implicitly calls this method when stringifying a `Matrix` instance.
+Returns a [`JSON`](http://www.json.org/) representation of a `Matrix`. [`JSON#stringify`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) implicitly calls this method when stringifying a `Matrix` instance.
 
 ``` javascript
 var data = new Int8Array( 10 );
