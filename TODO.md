@@ -9,6 +9,6 @@ TODO
 4. typed-array 
 	-	type
 	-	data
-5. create JSON Matrix reviver module: `json-to-matrix`
+5. create JSON Matrix reviver module: `matrix-reviver`
 6. update reviver example once reviver module published
 7. 
