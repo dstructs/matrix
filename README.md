@@ -685,20 +685,9 @@ var json = mat.toJSON();
 To a [revive](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) a `Matrix` from a [`JSON`](http://www.json.org/) string,
 
 ``` javascript
-var str = JSON.stringify( json );
+var reviver = require( 'dstructs-matrix-reviver' );
 
-// Get matrix constructors...
-var ctor = matrix( [0,0] ).constructor;
-var rawctor = matrix.raw( [0,0] ).constructor;
-
-function reviver( key, val ) {
-	if ( val && val.type === 'Matrix' ) {
-		if ( val.raw ) {
-			return rawctor( val.data, val.dtype, val.shape, val.offset, val.strides );
-		}
-		return ctor( val.data, val.dtype, val.shape, val.offset, val.strides );
-	}
-}
+var str = JSON.stringify( mat.toJSON() );
 
 var mat = JSON.parse( str, reviver );
 /*
