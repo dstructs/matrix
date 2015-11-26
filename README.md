@@ -733,7 +733,7 @@ To a [revive][json-parse] a `Matrix` from a [`JSON`][json] string,
 
 ``` javascript
 // Matrix reviver:
-var reviver = require( 'dstructs-matrix-reviver' );
+var reviver = require( 'dstructs-json-to-matrix' );
 
 // Stringify a matrix (implicitly calls `.toJSON`):
 var str = JSON.stringify( mat );
