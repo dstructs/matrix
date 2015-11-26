@@ -253,7 +253,7 @@ A `Matrix` has the following methods...
 
 ### Set Methods
 
-These methods modify a `Matrix`:
+These methods mutate a `Matrix`:
 
 <a name="matrix-set"></a>
 #### Matrix.prototype.set( i, j, value )
