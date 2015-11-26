@@ -4,7 +4,44 @@ Matrix
 
 > Matrices.
 
+1. [Installation](#installation)
+1. [Usage](#usage)
+	-	[matrix()](#matrix)
+	-	[Properties](#properties)
+		*	[dtype](#matrix-dtype)
+		*	[ndims](#matrix-ndims)
+		*	[shape](#matrix-shape)
+		*	[offset](#matrix-offset)
+		*	[strides](#matrix-strides)
+		*	[length](#matrix-length)
+		*	[nbytes](#matrix-nbytes)
+		*	[data](#matrix-data)
+	-	[Methods](#methods)
+		*	[Set Methods](#set-methods)
+			-	[Matrix.prototype.set()](#matrix-set)
+			-	[Matrix.prototype.iset()](#matrix-iset)
+			-	[Matrix.prototype.mset()](#matrix-mset)
+			-	[Matrix.prototype.sset()](#matrix-sset)
+		*	[Get Methods](#get-methods)
+			-	[Matrix.prototype.get()](#matrix-get)
+			-	[Matrix.prototype.iget()](#matrix-iget)
+			-	[Matrix.prototype.mget()](#matrix-mget)
+			-	[Matrix.prototype.sget()](#matrix-sget)
+		*	[Accessor Methods](#accessor-methods)
+			-	[Matrix.prototype.toString()](#matrix-tostring)
+			-	[Matrix.prototype.toJSON()](#matrix-tojson)
+	-	[Constructor](#matrix-constructor)
+	-	[Raw](#raw)
+		*	[matrix.raw()](#matrix-raw)
+1.	[Notes](#notes)
+	-	[Linear Indexing](#linear-indexing)
+1. 	[Examples](#examples)
+1.	[Tests](#tests)
+	-	[Unit](#unit)
+	-	[Coverage](#test-coverage)
+1. 	[License](#license)
 
+---
 ## Installation
 
 ``` bash
