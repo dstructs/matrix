@@ -52,7 +52,7 @@ describe( 'matrix#toJSON', function tests() {
 			data[ i ] = i * 2;
 		}
 
-		mat = matrix( data, [3,2], 'float32' );
+		mat = matrix( data, [3,2] );
 
 		actual = mat.toJSON();
 		expected = JSON.stringify({
@@ -102,7 +102,7 @@ describe( 'matrix#toJSON', function tests() {
 			data[ i ] = i * 2;
 		}
 
-		mat = matrix.raw( data, [3,2], 'float32' );
+		mat = matrix.raw( data, [3,2] );
 
 		actual = mat.toJSON();
 		expected = JSON.stringify({
