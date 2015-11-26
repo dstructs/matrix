@@ -49,7 +49,7 @@ Matrix
 $ npm install dstructs-matrix
 ```
 
-For use in the browser, use [browserify](https://github.com/substack/node-browserify).
+For use in the browser, use [browserify][browserify].
 
 
 ## Usage
@@ -121,7 +121,7 @@ var mat = matrix( data, [2,2], 'uint32' );
 */
 ```
 
-If provided an `Array` instead of a typed array and no `dtype` is specified, the input `data` array is [cast](https://github.com/compute-io/cast-arrays) to `float64`.
+If provided an `Array` instead of a typed array and no `dtype` is specified, the input `data` array is [cast][cast-arrays] to `float64`.
 
 ``` javascript
 var data = [ 10, 20, 30, 40, 50, 60 ];
@@ -203,7 +203,7 @@ While not __frozen__, most consumers should treat the `strides` elements as __re
 <a name="matrix-length" class="read-only-property"></a>
 #### length
 
-A __read-only__ property returning the matrix `length`; i.e., how many elements are in the `Matrix`, similar to [`Array#length`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length).
+A __read-only__ property returning the matrix `length`; i.e., how many elements are in the `Matrix`, similar to [`Array#length`][array-length].
 
 ``` javascript
 var len = mat.length;
@@ -407,7 +407,7 @@ __Notes__:
 <a name="matrix-sset"></a>
 #### Matrix.prototype.sset( subsequence, value[, thisArg] )
 
-Sets `Matrix` elements according to a specified [`subsequence`](https://github.com/compute-io/indexspace). The `subsequence` must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row indices `3,4,5,6` and `5:9` corresponds to column indices `5,6,7,8`. The second argument may be either a `number` primitive, a `Matrix` containing values to set, or a callback `function`.
+Sets `Matrix` elements according to a specified [`subsequence`][indexspace]. The `subsequence` must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row indices `3,4,5,6` and `5:9` corresponds to column indices `5,6,7,8`. The second argument may be either a `number` primitive, a `Matrix` containing values to set, or a callback `function`.
 
 ``` javascript
 var data = new Float32Array( 10*10 );
@@ -484,7 +484,7 @@ __Notes__:
 *	Values which are set are cast to the target `Matrix` data type.
 * 	Out-of-bounds row and column indices will silently fail.
 *	A provided `Matrix` must have dimensions which match the submatrix defined by row and column subsequences.
-*	For further subsequence documentation, see [compute-indexspace](https://github.com/compute-io/indexspace).
+*	For further subsequence documentation, see [compute-indexspace][indexspace].
 
 
 ===
@@ -602,7 +602,7 @@ __Note__: out-of-bounds indices are ignored.
 <a name="matrix-sget"></a>
 #### Matrix.prototype.sget( subsequence )
 
-Returns `Matrix` elements in a new `Matrix` according to a specified [`subsequence`](https://github.com/compute-io/indexspace). The `subsequence` must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row indices `3,4,5,6` and `5:9` corresponds to column indices `5,6,7,8`. If a `subsequence` does not correspond to any `Matrix` elements, the method returns an empty `Matrix`.
+Returns `Matrix` elements in a new `Matrix` according to a specified [`subsequence`][indexspace]. The `subsequence` must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row indices `3,4,5,6` and `5:9` corresponds to column indices `5,6,7,8`. If a `subsequence` does not correspond to any `Matrix` elements, the method returns an empty `Matrix`.
 
 ``` javascript
 var submatrix;
@@ -649,7 +649,7 @@ submatrix = mat.sget( '50:100,:' );
 
 __Notes__:
 *	Out-of-bounds indices are ignored.
-*	For further subsequence documentation, see [compute-indexspace](https://github.com/compute-io/indexspace).
+*	For further subsequence documentation, see [compute-indexspace][indexspace].
 
 
 ===
@@ -660,7 +660,7 @@ These methods do **not** mutate a `Matrix` and return some representation of a `
 <a name="matrix-tostring"></a>
 #### Matrix.prototype.toString()
 
-Returns a `string` representation of a `Matrix`. This method is similar to [`Array#toString`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString), except that rows are delineated by __semicolons__ and column values are delineated by __commas__.
+Returns a `string` representation of a `Matrix`. This method is similar to [`Array#toString`][array-string], except that rows are delineated by __semicolons__ and column values are delineated by __commas__.
 
 ``` javascript
 var data = new Int8Array( 10 );
@@ -695,7 +695,7 @@ for ( i = 0; i < rows.length; i++ ) {
 <a name="matrix-tojson"></a>
 #### Matrix.prototype.toJSON()
 
-Returns a [`JSON`](http://www.json.org/) representation of a `Matrix`. [`JSON#stringify`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) implicitly calls this method when stringifying a `Matrix` instance.
+Returns a [`JSON`][json] representation of a `Matrix`. [`JSON#stringify`][json-stringify] implicitly calls this method when stringifying a `Matrix` instance.
 
 ``` javascript
 var data = new Int8Array( 10 );
@@ -726,7 +726,7 @@ var json = mat.toJSON();
 */
 ```
 
-To a [revive](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) a `Matrix` from a [`JSON`](http://www.json.org/) string,
+To a [revive][json-parse] a `Matrix` from a [`JSON`][json] string,
 
 ``` javascript
 // Matrix reviver:
@@ -834,7 +834,7 @@ __Notes__:
 
 #### Linear Indexing
 
-A linear `index` corresponds to an element position in a flattened `Matrix` arranged in [__row-major__](https://en.wikipedia.org/wiki/Row-major_order) order. For example, consider a __zero-filled__ 5x2 matrix, its subscripts, and its corresponding linear indices.
+A linear `index` corresponds to an element position in a flattened `Matrix` arranged in [__row-major__][row-major-order] order. For example, consider a [__zero-filled__][zeros] 5x2 matrix, its subscripts, and its corresponding linear indices.
 
 ``` javascript
 /*
@@ -887,7 +887,7 @@ $ node ./examples/index.js
 
 ### Unit
 
-Unit tests use the [Mocha](http://mochajs.org/) test framework with [Chai](http://chaijs.com) assertions. To run the tests, execute the following command in the top-level application directory:
+Unit tests use the [Mocha][mocha] test framework with [Chai][chai] assertions. To run the tests, execute the following command in the top-level application directory:
 
 ``` bash
 $ make test
@@ -898,7 +898,7 @@ All new feature development should have corresponding unit tests to validate cor
 
 ### Test Coverage
 
-This repository uses [Istanbul](https://github.com/gotwarlost/istanbul) as its code coverage tool. To generate a test coverage report, execute the following command in the top-level application directory:
+This repository uses [Istanbul][istanbul] as its code coverage tool. To generate a test coverage report, execute the following command in the top-level application directory:
 
 ``` bash
 $ make test-cov
@@ -914,12 +914,12 @@ $ make view-cov
 ---
 ## License
 
-[MIT license](http://opensource.org/licenses/MIT).
+[MIT license][mit-license].
 
 
 ## Copyright
 
-Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
+Copyright &copy; 2015. The [Compute.io][compute-io] Authors.
 
 
 [npm-image]: http://img.shields.io/npm/v/dstructs-matrix.svg
@@ -939,3 +939,19 @@ Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
 
 [github-issues-image]: http://img.shields.io/github/issues/dstructs/matrix.svg
 [github-issues-url]: https://github.com/dstructs/matrix/issues
+
+[browserify]: https://github.com/substack/node-browserify
+[cast-arrays]: https://github.com/compute-io/cast-arrays
+[array-length]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length
+[indexspace]: https://github.com/compute-io/indexspace
+[array-string]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString
+[json]: http://www.json.org/
+[json-stringify]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+[json-parse]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+[row-major-order]: https://en.wikipedia.org/wiki/Row-major_order
+[zeros]: https://github.com/compute-io/zeros
+[mocha]: http://mochajs.org/
+[chai]: http://chaijs.com
+[istanbul]: https://github.com/gotwarlost/istanbul
+[mit-license]: http://opensource.org/licenses/MIT
+[compute-io]: https://github.com/compute-io

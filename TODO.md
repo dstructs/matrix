@@ -11,4 +11,5 @@ TODO
 	-	data
 5. create JSON Matrix reviver module
 6. update reviver example once reviver module published
-7. 
+7. allow for specifying column major order?
+8. 
