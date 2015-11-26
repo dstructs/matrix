@@ -685,10 +685,13 @@ var json = mat.toJSON();
 To a [revive](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) a `Matrix` from a [`JSON`](http://www.json.org/) string,
 
 ``` javascript
+// Matrix reviver:
 var reviver = require( 'dstructs-matrix-reviver' );
 
+// Stringify a JSON representation of a matrix:
 var str = JSON.stringify( mat.toJSON() );
 
+// Revive a Matrix from a JSON string:
 var mat = JSON.parse( str, reviver );
 /*
 	[ 0 1
