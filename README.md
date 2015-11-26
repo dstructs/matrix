@@ -660,6 +660,13 @@ for ( var i = 0; i < data.length; i++ ) {
 }
 
 var mat = matrix( data, [5,2] );
+/*
+	[ 0 1
+	  2 3
+	  4 5
+	  6 7
+	  8 9 ]
+*/
 
 var json = mat.toJSON();
 /*
@@ -675,20 +682,19 @@ var json = mat.toJSON();
 */
 ```
 
-To a [revive]() a `Matrix` from a [`JSON`](http://www.json.org/) string,
+To a [revive](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) a `Matrix` from a [`JSON`](http://www.json.org/) string,
 
 ``` javascript
 var str = JSON.stringify( json );
 
 // Get matrix constructors...
 var ctor = matrix( [0,0] ).constructor;
-var rctor = matrix.raw( [0,0] ).constructor;
+var rawctor = matrix.raw( [0,0] ).constructor;
 
 function reviver( key, val ) {
-	var mat;
 	if ( val && val.type === 'Matrix' ) {
 		if ( val.raw ) {
-			return rctor( val.data, val.dtype, val.shape, val.offset, val.strides );
+			return rawctor( val.data, val.dtype, val.shape, val.offset, val.strides );
 		}
 		return ctor( val.data, val.dtype, val.shape, val.offset, val.strides );
 	}
