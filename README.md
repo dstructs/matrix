@@ -6,30 +6,32 @@ Matrix
 
 1. [Installation](#installation)
 1. [Usage](#usage)
-	-	[matrix()](#matrix)
-	-	[Properties](#properties)
-		*	[dtype](#matrix-dtype)
-		*	[ndims](#matrix-ndims)
-		*	[shape](#matrix-shape)
-		*	[offset](#matrix-offset)
-		*	[strides](#matrix-strides)
-		*	[length](#matrix-length)
-		*	[nbytes](#matrix-nbytes)
-		*	[data](#matrix-data)
-	-	[Methods](#methods)
-		*	[Set Methods](#set-methods)
-			-	[Matrix.prototype.set()](#matrix-set)
-			-	[Matrix.prototype.iset()](#matrix-iset)
-			-	[Matrix.prototype.mset()](#matrix-mset)
-			-	[Matrix.prototype.sset()](#matrix-sset)
-		*	[Get Methods](#get-methods)
-			-	[Matrix.prototype.get()](#matrix-get)
-			-	[Matrix.prototype.iget()](#matrix-iget)
-			-	[Matrix.prototype.mget()](#matrix-mget)
-			-	[Matrix.prototype.sget()](#matrix-sget)
-		*	[Accessor Methods](#accessor-methods)
-			-	[Matrix.prototype.toString()](#matrix-tostring)
-			-	[Matrix.prototype.toJSON()](#matrix-tojson)
+	-	[Matrix](#matrix)
+		*	[matrix()](#matrix)
+	-	Matrix Instances
+		-	[Properties](#properties)
+			*	[dtype](#matrix-dtype)
+			*	[ndims](#matrix-ndims)
+			*	[shape](#matrix-shape)
+			*	[offset](#matrix-offset)
+			*	[strides](#matrix-strides)
+			*	[length](#matrix-length)
+			*	[nbytes](#matrix-nbytes)
+			*	[data](#matrix-data)
+		-	[Methods](#methods)
+			*	[Set Methods](#set-methods)
+				-	[Matrix.prototype.set()](#matrix-set)
+				-	[Matrix.prototype.iset()](#matrix-iset)
+				-	[Matrix.prototype.mset()](#matrix-mset)
+				-	[Matrix.prototype.sset()](#matrix-sset)
+			*	[Get Methods](#get-methods)
+				-	[Matrix.prototype.get()](#matrix-get)
+				-	[Matrix.prototype.iget()](#matrix-iget)
+				-	[Matrix.prototype.mget()](#matrix-mget)
+				-	[Matrix.prototype.sget()](#matrix-sget)
+			*	[Accessor Methods](#accessor-methods)
+				-	[Matrix.prototype.toString()](#matrix-tostring)
+				-	[Matrix.prototype.toJSON()](#matrix-tojson)
 	-	[Constructor](#matrix-constructor)
 	-	[Raw](#raw)
 		*	[matrix.raw()](#matrix-raw)
@@ -251,6 +253,8 @@ A `Matrix` has the following methods...
 
 
 ### Set Methods
+
+The methods modify a `Matrix`:
 
 <a name="matrix-set"></a>
 #### Matrix.prototype.set( i, j, value )
@@ -487,6 +491,8 @@ __Notes__:
 ===
 ### Get Methods
 
+These methods provide access to `Matrix` elements:
+
 <a name="matrix-get"></a>
 #### Matrix.prototype.get( i, j )
 
@@ -649,6 +655,8 @@ __Notes__:
 
 ===
 ### Accessor Methods
+
+These methods do **not** mutate a `Matrix` and return some representation of a `Matrix`:
 
 <a name="matrix-tostring"></a>
 #### Matrix.prototype.toString()
