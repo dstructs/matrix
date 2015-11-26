@@ -690,6 +690,7 @@ var reviver = require( 'dstructs-matrix-reviver' );
 
 // Stringify a JSON representation of a matrix:
 var str = JSON.stringify( mat.toJSON() );
+// returns '{"type": "Matrix","dtype": "int8","shape": [5,2],"offset": 0,"strides": [2,1],"raw": false,"data": [0,1,2,3,4,5,6,7,8,9]}''
 
 // Revive a Matrix from a JSON string:
 var mat = JSON.parse( str, reviver );
