@@ -834,7 +834,7 @@ __Notes__:
 
 #### Linear Indexing
 
-A linear `index` corresponds to an element position in a flattened `Matrix` arranged in __row-major__ order. For example, consider a __zero-filled__ 5x2 matrix, its subscripts, and its corresponding linear indices.
+A linear `index` corresponds to an element position in a flattened `Matrix` arranged in [__row-major__](https://en.wikipedia.org/wiki/Row-major_order) order. For example, consider a __zero-filled__ 5x2 matrix, its subscripts, and its corresponding linear indices.
 
 ``` javascript
 /*
