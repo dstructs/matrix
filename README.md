@@ -4,6 +4,9 @@ Matrix
 
 > Matrices.
 
+This module exports a [`Matrix`][matrix] data structure for efficient storage and computation of numeric values. The data structure provides an interface for accessing and modifying one or more stored values. Matrices find common use in linear algebra, numerical analysis, image manipulation, machine learning, and data processing.
+
+---
 1. [Installation](#installation)
 1. [Usage](#usage)
 	-	[Matrix](#matrix)
@@ -940,6 +943,7 @@ Copyright &copy; 2015. The [Compute.io][compute-io] Authors.
 [github-issues-image]: http://img.shields.io/github/issues/dstructs/matrix.svg
 [github-issues-url]: https://github.com/dstructs/matrix/issues
 
+[matrix]: https://en.wikipedia.org/wiki/Matrix_(mathematics)
 [browserify]: https://github.com/substack/node-browserify
 [cast-arrays]: https://github.com/compute-io/cast-arrays
 [array-length]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length
