@@ -22,14 +22,14 @@ describe( 'matrix#toJSON', function tests() {
 		expect( toJSON ).to.be.a( 'function' );
 	});
 
-	it( 'should serialize a Matrix instance as JSON', function test() {
+	it( 'should return a Matrix instance in JSON representation', function test() {
 		var mat, data, actual, expected;
 
 		// Zero-filled matrix:
 		mat = matrix( [4,4], 'int8' );
 
 		actual = mat.toJSON();
-		expected = JSON.stringify({
+		expected = {
 			'type': 'Matrix',
 			'dtype': 'int8',
 			'shape': [4,4],
@@ -42,9 +42,9 @@ describe( 'matrix#toJSON', function tests() {
 				0,0,0,0,
 				0,0,0,0
 			]
-		});
+		};
 
-		assert.strictEqual( actual, expected );
+		assert.deepEqual( actual, expected );
 
 		// Full matrix:
 		data = new Float32Array( 6 );
@@ -55,7 +55,7 @@ describe( 'matrix#toJSON', function tests() {
 		mat = matrix( data, [3,2] );
 
 		actual = mat.toJSON();
-		expected = JSON.stringify({
+		expected = {
 			'type': 'Matrix',
 			'dtype': 'float32',
 			'shape': [3,2],
@@ -67,19 +67,19 @@ describe( 'matrix#toJSON', function tests() {
 				4,6,
 				8,10
 			]
-		});
+		};
 
-		assert.strictEqual( actual, expected );
+		assert.deepEqual( actual, expected );
 	});
 
-	it( 'should serialize a raw Matrix instance as JSON', function test() {
+	it( 'should return a raw Matrix instance in JSON presentation', function test() {
 		var mat, data, actual, expected;
 
 		// Zero-filled matrix:
 		mat = matrix.raw( [4,4], 'int8' );
 
 		actual = mat.toJSON();
-		expected = JSON.stringify({
+		expected = {
 			'type': 'Matrix',
 			'dtype': 'int8',
 			'shape': [4,4],
@@ -92,9 +92,9 @@ describe( 'matrix#toJSON', function tests() {
 				0,0,0,0,
 				0,0,0,0
 			]
-		});
+		};
 
-		assert.strictEqual( actual, expected );
+		assert.deepEqual( actual, expected );
 
 		// Full matrix:
 		data = new Float32Array( 6 );
@@ -105,7 +105,7 @@ describe( 'matrix#toJSON', function tests() {
 		mat = matrix.raw( data, [3,2] );
 
 		actual = mat.toJSON();
-		expected = JSON.stringify({
+		expected = {
 			'type': 'Matrix',
 			'dtype': 'float32',
 			'shape': [3,2],
@@ -117,9 +117,9 @@ describe( 'matrix#toJSON', function tests() {
 				4,6,
 				8,10
 			]
-		});
+		};
 
-		assert.strictEqual( actual, expected );
+		assert.deepEqual( actual, expected );
 	});
 
 });
