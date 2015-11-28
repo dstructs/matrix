@@ -6,7 +6,4 @@ TODO
 	-	e.g., the case where `linspace` outputs a typed-array
 	-	currently, only plain arrays are accepted
 3. allow for specifying column major order?
-4. typed-array 
-	-	type
-	-	data
-5. 
+4. 
