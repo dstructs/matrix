@@ -17,3 +17,6 @@ console.log( mat.get( 1, 1 ) );
 
 // Convert the matrix to a string:
 console.log( mat.toString() );
+
+// Convert the matrix to JSON:
+console.log( mat.toJSON() );

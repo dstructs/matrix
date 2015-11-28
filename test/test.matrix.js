@@ -167,6 +167,16 @@ describe( 'matrix', function tests() {
 		assert.strictEqual( mat.constructor.name, 'Matrix' );
 	});
 
+	it( 'should return a new Matrix instance of a specified type', function test() {
+		var mat;
+
+		mat = matrix( new Int8Array( 1 ), [1,1] );
+		assert.strictEqual( mat.dtype, 'int8' );
+
+		mat = matrix( new Int8Array( 1 ), [1,1], 'int8' );
+		assert.strictEqual( mat.dtype, 'int8' );
+	});
+
 	it( 'should initialize a zero-filled Matrix if not provided input data (default dtype float64)', function test() {
 		var mat = matrix( [1,1] );
 

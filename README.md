@@ -4,14 +4,55 @@ Matrix
 
 > Matrices.
 
+This module exports a [`Matrix`][matrix] data structure for efficient storage and computation of numeric values. The data structure provides an interface for accessing and modifying one or more stored values. Matrices find common use in linear algebra, numerical analysis, image manipulation, machine learning, and data processing.
 
+---
+1. [Installation](#installation)
+1. [Usage](#usage)
+	-	[Matrix](#matrix)
+		*	[matrix()](#matrix)
+	-	[Properties](#properties)
+		*	[dtype](#matrix-dtype)
+		*	[ndims](#matrix-ndims)
+		*	[shape](#matrix-shape)
+		*	[offset](#matrix-offset)
+		*	[strides](#matrix-strides)
+		*	[length](#matrix-length)
+		*	[nbytes](#matrix-nbytes)
+		*	[data](#matrix-data)
+	-	[Methods](#methods)
+		*	[Set](#set-methods)
+			-	[Matrix.prototype.set()](#matrix-set)
+			-	[Matrix.prototype.iset()](#matrix-iset)
+			-	[Matrix.prototype.mset()](#matrix-mset)
+			-	[Matrix.prototype.sset()](#matrix-sset)
+		*	[Get](#get-methods)
+			-	[Matrix.prototype.get()](#matrix-get)
+			-	[Matrix.prototype.iget()](#matrix-iget)
+			-	[Matrix.prototype.mget()](#matrix-mget)
+			-	[Matrix.prototype.sget()](#matrix-sget)
+		*	[Accessor](#accessor-methods)
+			-	[Matrix.prototype.toString()](#matrix-tostring)
+			-	[Matrix.prototype.toJSON()](#matrix-tojson)
+	-	[Constructor](#matrix-constructor)
+	-	[Raw](#raw)
+		*	[matrix.raw()](#matrix-raw)
+1.	[Notes](#notes)
+	-	[Linear Indexing](#linear-indexing)
+1. 	[Examples](#examples)
+1.	[Tests](#tests)
+	-	[Unit](#unit)
+	-	[Coverage](#test-coverage)
+1. 	[License](#license)
+
+---
 ## Installation
 
 ``` bash
 $ npm install dstructs-matrix
 ```
 
-For use in the browser, use [browserify](https://github.com/substack/node-browserify).
+For use in the browser, use [browserify][browserify].
 
 
 ## Usage
@@ -83,7 +124,7 @@ var mat = matrix( data, [2,2], 'uint32' );
 */
 ```
 
-If provided an `Array` instead of a typed array and no `dtype` is specified, the input `data` array is [cast](https://github.com/compute-io/cast-arrays) to `float64`.
+If provided an `Array` instead of a typed array and no `dtype` is specified, the input `data` array is [cast][cast-arrays] to `float64`.
 
 ``` javascript
 var data = [ 10, 20, 30, 40, 50, 60 ];
@@ -165,7 +206,7 @@ While not __frozen__, most consumers should treat the `strides` elements as __re
 <a name="matrix-length" class="read-only-property"></a>
 #### length
 
-A __read-only__ property returning the matrix `length`; i.e., how many elements are in the `Matrix`, similar to [`Array#length`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length).
+A __read-only__ property returning the matrix `length`; i.e., how many elements are in the `Matrix`, similar to [`Array#length`][array-length].
 
 ``` javascript
 var len = mat.length;
@@ -214,6 +255,8 @@ A `Matrix` has the following methods...
 
 
 ### Set Methods
+
+These methods mutate a `Matrix`:
 
 <a name="matrix-set"></a>
 #### Matrix.prototype.set( i, j, value )
@@ -367,7 +410,7 @@ __Notes__:
 <a name="matrix-sset"></a>
 #### Matrix.prototype.sset( subsequence, value[, thisArg] )
 
-Sets `Matrix` elements according to a specified [`subsequence`](https://github.com/compute-io/indexspace). The `subsequence` must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row indices `3,4,5,6` and `5:9` corresponds to column indices `5,6,7,8`. The second argument may be either a `number` primitive, a `Matrix` containing values to set, or a callback `function`.
+Sets `Matrix` elements according to a specified [`subsequence`][indexspace]. The `subsequence` must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row indices `3,4,5,6` and `5:9` corresponds to column indices `5,6,7,8`. The second argument may be either a `number` primitive, a `Matrix` containing values to set, or a callback `function`.
 
 ``` javascript
 var data = new Float32Array( 10*10 );
@@ -444,11 +487,13 @@ __Notes__:
 *	Values which are set are cast to the target `Matrix` data type.
 * 	Out-of-bounds row and column indices will silently fail.
 *	A provided `Matrix` must have dimensions which match the submatrix defined by row and column subsequences.
-*	For further subsequence documentation, see [compute-indexspace](https://github.com/compute-io/indexspace).
+*	For further subsequence documentation, see [compute-indexspace][indexspace].
 
 
 ===
 ### Get Methods
+
+These methods provide access to `Matrix` elements:
 
 <a name="matrix-get"></a>
 #### Matrix.prototype.get( i, j )
@@ -560,7 +605,7 @@ __Note__: out-of-bounds indices are ignored.
 <a name="matrix-sget"></a>
 #### Matrix.prototype.sget( subsequence )
 
-Returns `Matrix` elements in a new `Matrix` according to a specified [`subsequence`](https://github.com/compute-io/indexspace). The `subsequence` must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row indices `3,4,5,6` and `5:9` corresponds to column indices `5,6,7,8`. If a `subsequence` does not correspond to any `Matrix` elements, the method returns an empty `Matrix`.
+Returns `Matrix` elements in a new `Matrix` according to a specified [`subsequence`][indexspace]. The `subsequence` must specify __both__ row and column subsequences; e.g., `'3:7,5:9'`, where `3:7` corresponds to row indices `3,4,5,6` and `5:9` corresponds to column indices `5,6,7,8`. If a `subsequence` does not correspond to any `Matrix` elements, the method returns an empty `Matrix`.
 
 ``` javascript
 var submatrix;
@@ -607,16 +652,18 @@ submatrix = mat.sget( '50:100,:' );
 
 __Notes__:
 *	Out-of-bounds indices are ignored.
-*	For further subsequence documentation, see [compute-indexspace](https://github.com/compute-io/indexspace).
+*	For further subsequence documentation, see [compute-indexspace][indexspace].
 
 
 ===
 ### Accessor Methods
 
+These methods do **not** mutate a `Matrix` and return some representation of a `Matrix`:
+
 <a name="matrix-tostring"></a>
 #### Matrix.prototype.toString()
 
-Returns a `string` representation of a `Matrix`. This method is similar to [`Array#toString`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString), except that rows are delineated by __semicolons__ and column values are delineated by __commas__.
+Returns a `string` representation of a `Matrix`. This method is similar to [`Array#toString`][array-string], except that rows are delineated by __semicolons__ and column values are delineated by __commas__.
 
 ``` javascript
 var data = new Int8Array( 10 );
@@ -645,6 +692,62 @@ for ( i = 0; i < rows.length; i++ ) {
 		rows[ i ][ j ] = parseFloat( cols[ j ] );
 	}
 }
+```
+
+
+<a name="matrix-tojson"></a>
+#### Matrix.prototype.toJSON()
+
+Returns a [`JSON`][json] representation of a `Matrix`. [`JSON#stringify`][json-stringify] implicitly calls this method when stringifying a `Matrix` instance.
+
+``` javascript
+var data = new Int8Array( 10 );
+for ( var i = 0; i < data.length; i++ ) {
+	data[ i ] = i;
+}
+
+var mat = matrix( data, [5,2] );
+/*
+	[ 0 1
+	  2 3
+	  4 5
+	  6 7
+	  8 9 ]
+*/
+
+var json = mat.toJSON();
+/*
+	{
+		"type": "Matrix",
+		"dtype": "int8",
+		"shape": [5,2],
+		"offset": 0,
+		"strides": [2,1],
+		"raw": false,
+		"data": [0,1,2,3,4,5,6,7,8,9]
+	}
+*/
+```
+
+To a [revive][json-parse] a `Matrix` from a [`JSON`][json] string,
+
+``` javascript
+// Matrix reviver:
+var reviver = require( 'dstructs-matrix-reviver' );
+
+// Stringify a matrix (implicitly calls `.toJSON`):
+var str = JSON.stringify( mat );
+// returns '{"type":"Matrix","dtype":"int8","shape":[5,2],"offset":0,"strides":[2,1],"raw":false,"data":[0,1,2,3,4,5,6,7,8,9]}'
+
+// Revive a Matrix from a JSON string:
+var mat = JSON.parse( str, reviver );
+/*
+	[ 0 1
+	  2 3
+	  4 5
+	  6 7
+	  8 9 ]
+*/
 ```
 
 
@@ -734,7 +837,7 @@ __Notes__:
 
 #### Linear Indexing
 
-A linear `index` corresponds to an element position in a flattened `Matrix` arranged in __row-major__ order. For example, consider a __zero-filled__ 5x2 matrix, its subscripts, and its corresponding linear indices.
+A linear `index` corresponds to an element position in a flattened `Matrix` arranged in [__row-major__][row-major-order] order. For example, consider a [__zero-filled__][zeros] 5x2 matrix, its subscripts, and its corresponding linear indices.
 
 ``` javascript
 /*
@@ -770,6 +873,9 @@ console.log( mat.get( 1, 1 ) );
 
 // Convert the matrix to a string:
 console.log( mat.toString() );
+
+// Convert the matrix to JSON:
+console.log( mat.toJSON() );
 ```
 
 To run the example code from the top-level application directory,
@@ -784,7 +890,7 @@ $ node ./examples/index.js
 
 ### Unit
 
-Unit tests use the [Mocha](http://mochajs.org/) test framework with [Chai](http://chaijs.com) assertions. To run the tests, execute the following command in the top-level application directory:
+Unit tests use the [Mocha][mocha] test framework with [Chai][chai] assertions. To run the tests, execute the following command in the top-level application directory:
 
 ``` bash
 $ make test
@@ -795,7 +901,7 @@ All new feature development should have corresponding unit tests to validate cor
 
 ### Test Coverage
 
-This repository uses [Istanbul](https://github.com/gotwarlost/istanbul) as its code coverage tool. To generate a test coverage report, execute the following command in the top-level application directory:
+This repository uses [Istanbul][istanbul] as its code coverage tool. To generate a test coverage report, execute the following command in the top-level application directory:
 
 ``` bash
 $ make test-cov
@@ -811,12 +917,12 @@ $ make view-cov
 ---
 ## License
 
-[MIT license](http://opensource.org/licenses/MIT).
+[MIT license][mit-license].
 
 
 ## Copyright
 
-Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
+Copyright &copy; 2015. The [Compute.io][compute-io] Authors.
 
 
 [npm-image]: http://img.shields.io/npm/v/dstructs-matrix.svg
@@ -836,3 +942,20 @@ Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
 
 [github-issues-image]: http://img.shields.io/github/issues/dstructs/matrix.svg
 [github-issues-url]: https://github.com/dstructs/matrix/issues
+
+[matrix]: https://en.wikipedia.org/wiki/Matrix_(mathematics)
+[browserify]: https://github.com/substack/node-browserify
+[cast-arrays]: https://github.com/compute-io/cast-arrays
+[array-length]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length
+[indexspace]: https://github.com/compute-io/indexspace
+[array-string]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString
+[json]: http://www.json.org/
+[json-stringify]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+[json-parse]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+[row-major-order]: https://en.wikipedia.org/wiki/Row-major_order
+[zeros]: https://github.com/compute-io/zeros
+[mocha]: http://mochajs.org/
+[chai]: http://chaijs.com
+[istanbul]: https://github.com/gotwarlost/istanbul
+[mit-license]: http://opensource.org/licenses/MIT
+[compute-io]: https://github.com/compute-io
