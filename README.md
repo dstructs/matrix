@@ -218,8 +218,10 @@ __Note__: while a `Matrix` has a `length` property, a `Matrix` should __not__ be
 ``` javascript
 var data = new Float32Array( 10 );
 
-var mat = matrix( data, [10,1] );
-// [ 0 0 0 0 0 0 0 0 0 0 ]
+var mat = matrix( data, [1,10] );
+/*
+    [ 0 0 0 0 0 0 0 0 0 0 ]
+*/
 
 var value = mat.get( 3, 1 );
 // returns 0

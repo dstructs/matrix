@@ -122,4 +122,19 @@ describe( 'matrix#toJSON', function tests() {
 		assert.deepEqual( actual, expected );
 	});
 
+	it( 'should deep copy properties to prevent accidental mutation', function test() {
+		var mat, json;
+
+		mat = matrix( [4,4], 'int8' );
+		json = mat.toJSON();
+
+		assert.deepEqual( mat.dtype, json.dtype );
+		assert.deepEqual( mat.shape, json. shape );
+		assert.deepEqual( mat.offset, json.offset );
+		assert.deepEqual( mat.strides, json.strides );
+
+		assert.isTrue( mat.shape !== json.shape );
+		assert.isTrue( mat.strides !== json.strides );
+	});
+
 });
