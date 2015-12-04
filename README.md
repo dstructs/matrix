@@ -223,7 +223,7 @@ var mat = matrix( data, [1,10] );
     [ 0 0 0 0 0 0 0 0 0 0 ]
 */
 
-var value = mat.get( 3, 1 );
+var value = mat.get( 1, 3 );
 // returns 0
 
 value = mat[ 3 ];
