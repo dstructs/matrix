@@ -6,4 +6,6 @@ TODO
 	-	e.g., the case where `linspace` outputs a typed-array
 	-	currently, only plain arrays are accepted
 3. allow for specifying column major order?
-4. 
+4. fix `toString` and `toJSON` tests by only using `call`
+	-	explicitly provide the context
+5. 

@@ -61,6 +61,10 @@ describe( 'Matrix', function tests() {
 		assert.isFunction( mat.toString );
 	});
 
+	it( 'should create a Matrix having a custom toJSON method', function test() {
+		assert.isFunction( mat.toJSON );
+	});
+
 	it( 'should create a Matrix having a protected dtype property', function test() {
 		assert.isTrue( mat.hasOwnProperty( 'dtype' ) );
 		assert.isString( mat.dtype );

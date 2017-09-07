@@ -4,6 +4,8 @@ Matrix
 
 > Matrices.
 
+<a target="_blank" rel="nofollow" href="https://app.codesponsor.io/link/2GH3ESgBANYoWNMCAicW2LQk/dstructs/matrix"><img alt="Sponsor" width="888" height="68" src="https://app.codesponsor.io/embed/2GH3ESgBANYoWNMCAicW2LQk/dstructs/matrix.svg"/></a>
+
 This module exports a [`Matrix`][matrix] data structure for efficient storage and computation of numeric values. The data structure provides an interface for accessing and modifying one or more stored values. Matrices find common use in linear algebra, numerical analysis, image manipulation, machine learning, and data processing.
 
 ---
