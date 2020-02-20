@@ -65,7 +65,7 @@
   },
   "devDependencies": {
     "chai": "3.x.x",
-    "codecov": "^1.0.1",
+    "codecov": "^3.6.5",
     "istanbul": "^0.3.0",
     "jshint": "2.x.x",
     "jshint-stylish": "2.x.x",
